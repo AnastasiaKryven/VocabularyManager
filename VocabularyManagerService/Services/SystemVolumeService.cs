@@ -1,27 +1,25 @@
-﻿using NAudio.CoreAudioApi;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
+using System.Windows.Forms;
+using NAudio.CoreAudioApi;
+using VocabularyManagerService.Interfaces;
+using VocabularyManagerService.Models;
 
-namespace VocabularyManager.Models
+namespace VocabularyManagerService.Services
 {
-    public class SystemVolumeConfigurator
+    public class SystemVolumeService: ISystemVolumeService
     {
         private readonly MMDeviceEnumerator _deviceEnumerator = new MMDeviceEnumerator();
         private readonly MMDevice _playbackDevice;
+        private List<Volume> Volumes = new List<Volume>();
 
-        public SystemVolumeConfigurator()
+        public SystemVolumeService()
         {
             _playbackDevice = _deviceEnumerator.GetDefaultAudioEndpoint(DataFlow.Render, Role.Multimedia);
             _playbackDevice.AudioEndpointVolume.OnVolumeNotification += AudioEndpointVolume_OnVolumeNotification;
-        }
-
-        void AudioEndpointVolume_OnVolumeNotification(AudioVolumeNotificationData data)
-        {
-            MessageBox.Show((data.MasterVolume*100).ToString());
         }
 
         public float GetVolume()
@@ -35,6 +33,11 @@ namespace VocabularyManager.Models
                 throw new ArgumentException("Volume must be between 0 and 100!");
 
             _playbackDevice.AudioEndpointVolume.MasterVolumeLevelScalar = volumeLevel / 100.0f;
+        }
+
+        public void AudioEndpointVolume_OnVolumeNotification(AudioVolumeNotificationData data)
+        {
+            Volumes.Add(new Volume {VolumeValue = data.MasterVolume * 100});
         }
     }
 }

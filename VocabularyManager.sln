@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.29728.190
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VocabularyManager", "VocabularyManager\VocabularyManager.csproj", "{9E97024C-28DE-41C6-A030-92B54827FC62}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VocabularyManagerService", "VocabularyManagerService\VocabularyManagerService.csproj", "{A5F09D36-2217-460D-A6E3-5CB376687459}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{9E97024C-28DE-41C6-A030-92B54827FC62}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9E97024C-28DE-41C6-A030-92B54827FC62}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9E97024C-28DE-41C6-A030-92B54827FC62}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5F09D36-2217-460D-A6E3-5CB376687459}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5F09D36-2217-460D-A6E3-5CB376687459}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5F09D36-2217-460D-A6E3-5CB376687459}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5F09D36-2217-460D-A6E3-5CB376687459}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
