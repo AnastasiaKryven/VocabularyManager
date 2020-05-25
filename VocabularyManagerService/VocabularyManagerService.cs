@@ -14,21 +14,24 @@ namespace VocabularyManagerService
 {
     public partial class VocabularyManagerService : ServiceBase
     {
+        private readonly IpcServer<string> server;
 
         ISystemVolumeService systemVolume = new SystemVolumeService();
         public VocabularyManagerService()
         {
             InitializeComponent();
-            
+            server = new IpcServer<string>("test");
         }
 
         protected override void OnStart(string[] args)
         {
-            systemVolume.GetVolume();
+
+            server.Start<ServerObserver>();
         }
 
         protected override void OnStop()
         {
+            server.Stop();
         }
     }
 }

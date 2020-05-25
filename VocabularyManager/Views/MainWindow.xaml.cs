@@ -15,6 +15,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using VocabularyManager.Models;
+using VocabularyManager.Services;
+using VocabularyManagerService.Services;
 
 namespace VocabularyManager
 {
@@ -26,6 +28,7 @@ namespace VocabularyManager
         public MainWindow()
         {
             InitializeComponent();
+            var client1 = new IpcClient<string>(".", "test", new ClientObserver()).Create();
         }
 
         private const int APPCOMMAND_VOLUME_UP = 0xA0000;
