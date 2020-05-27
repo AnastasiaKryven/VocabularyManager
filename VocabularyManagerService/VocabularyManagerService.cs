@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.ServiceProcess;
 using System.Text;
@@ -20,13 +21,25 @@ namespace VocabularyManagerService
         public VocabularyManagerService()
         {
             InitializeComponent();
+            this.CanStop = true; 
+            this.CanPauseAndContinue = true; 
+            this.AutoLog = true;
             server = new IpcServer<string>("test");
+            File.Create(Environment.CurrentDirectory + "Log.txt");
+
         }
 
         protected override void OnStart(string[] args)
         {
-
-            server.Start<ServerObserver>();
+            try
+            {
+                server.Start<ServerObserver>();
+            }
+            catch (Exception e)
+            {
+                StreamWriter sw = new StreamWriter(Environment.CurrentDirectory + "Log.txt", true);
+                sw.Write(e.Message);
+            }
         }
 
         protected override void OnStop()

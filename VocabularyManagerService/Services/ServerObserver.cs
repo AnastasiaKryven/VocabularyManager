@@ -10,13 +10,18 @@ namespace VocabularyManagerService.Services
 {
     public class ServerObserver : IPipeStreamObserver<string>
     {
+        SystemVolumeService volumeService = new SystemVolumeService();
 
         public void OnNext(string value)
         {
-            value += " World!";
+            
+            //volumeService.SetVolume(Convert.ToSingle(value));
+            
             Console.WriteLine(value);
 
             PipeStream.Write(value);
+
+            
         }
 
         public void OnError(Exception error)

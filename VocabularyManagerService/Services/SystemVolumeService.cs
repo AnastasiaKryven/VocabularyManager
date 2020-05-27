@@ -19,7 +19,7 @@ namespace VocabularyManagerService.Services
         public SystemVolumeService()
         {
             _playbackDevice = _deviceEnumerator.GetDefaultAudioEndpoint(DataFlow.Render, Role.Multimedia);
-            _playbackDevice.AudioEndpointVolume.OnVolumeNotification += AudioEndpointVolume_OnVolumeNotification;
+            //_playbackDevice.AudioEndpointVolume.OnVolumeNotification += AudioEndpointVolume_OnVolumeNotification;
         }
 
         public float GetVolume()
@@ -37,7 +37,7 @@ namespace VocabularyManagerService.Services
 
         public void AudioEndpointVolume_OnVolumeNotification(AudioVolumeNotificationData data)
         {
-            Volumes.Add(new Volume {VolumeValue = data.MasterVolume * 100});
+           // Volumes.Add(new Volume {VolumeValue = data.MasterVolume * 100});
         }
     }
 }

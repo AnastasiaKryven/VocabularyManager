@@ -25,21 +25,14 @@ namespace VocabularyManager
     /// </summary>
     public partial class MainWindow : Window
     {
+        ClientObserver observer = new ClientObserver(); 
+
         public MainWindow()
         {
             InitializeComponent();
-            var client1 = new IpcClient<string>(".", "test", new ClientObserver()).Create();
+            //var client1 = new IpcClient<string>(".", "test", observer).Create();
         }
 
-        private const int APPCOMMAND_VOLUME_UP = 0xA0000;
-        private const int APPCOMMAND_VOLUME_DOWN = 0x90000;
-        private const int WM_APPCOMMAND = 0x319;
-
-        [DllImport("user32.dll")]
-        public static extern IntPtr SendMessageW(IntPtr hWnd, int Msg,
-            IntPtr wParam, IntPtr lParam);
-
-  
         private void slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
             ((Slider)sender).SelectionEnd = e.NewValue;
@@ -48,9 +41,13 @@ namespace VocabularyManager
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
-            SystemVolumeConfigurator volume = new SystemVolumeConfigurator();
+            var client1 = new IpcClient<string>(".", "test", observer).Create();
+            observer.OnNext(slider.Value.ToString());
+            //    SystemVolumeConfigurator volume = new SystemVolumeConfigurator();
 
-            volume.SetVolume((float)slider.Value);
+            //    volume.SetVolume((float)slider.Value);
+
+
         }
 
         private void btnGet_Click(object sender, RoutedEventArgs e)

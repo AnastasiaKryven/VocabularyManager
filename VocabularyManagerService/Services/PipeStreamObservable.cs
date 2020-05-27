@@ -50,16 +50,14 @@ namespace VocabularyManagerService.Services
 
                     AccessControlType.Allow
 
-                    )
+                )
 
-                );
-
+            );
         }
 
 
 
         public static void Write<T>(this PipeStream stream, T type)
-
         {
 
             BinaryFormatter.Value.Serialize(stream, type);

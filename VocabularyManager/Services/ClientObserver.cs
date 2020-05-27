@@ -14,9 +14,10 @@ namespace VocabularyManager.Services
 
         public void OnNext(string value)
         {
+            Console.WriteLine("Client");
             Console.WriteLine(value);
 
-            PipeStream.Write("Hello ");
+            PipeStream.Write(value);
         }
 
         public void OnError(Exception error)
@@ -33,7 +34,7 @@ namespace VocabularyManager.Services
 
         public void OnConnected()
         {
-            PipeStream.Write("Hello ");
+            PipeStream.Write("Connect client...");
         }
     }
 }
