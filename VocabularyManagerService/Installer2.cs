@@ -12,15 +12,16 @@ namespace VocabularyManagerService
     [RunInstaller(true)]
     public partial class Installer2 : System.Configuration.Install.Installer
     {
-        ServiceInstaller serviceInstaller;
-        ServiceProcessInstaller processInstaller;
+        readonly ServiceInstaller serviceInstaller;
+        readonly ServiceProcessInstaller processInstaller;
         public Installer2()
         {
             InitializeComponent();
             serviceInstaller = new ServiceInstaller();
-            processInstaller = new ServiceProcessInstaller();
-
-            processInstaller.Account = ServiceAccount.LocalSystem;
+            processInstaller = new ServiceProcessInstaller
+            {
+                Account = ServiceAccount.LocalSystem
+            };
             serviceInstaller.StartType = ServiceStartMode.Manual;
             serviceInstaller.ServiceName = "VocabularyService";
             Installers.Add(processInstaller);

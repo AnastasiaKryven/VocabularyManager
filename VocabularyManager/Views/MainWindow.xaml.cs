@@ -1,19 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
+using NamedPipeWrapper;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Interop;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using VocabularyManager.Models;
 using VocabularyManager.Services;
 using VocabularyManagerService.Services;
@@ -25,12 +13,40 @@ namespace VocabularyManager
     /// </summary>
     public partial class MainWindow : Window
     {
-        ClientObserver observer = new ClientObserver(); 
+
+        private readonly NamedPipeClient<string> _client = new NamedPipeClient<string>("test");
+
 
         public MainWindow()
         {
             InitializeComponent();
-            //var client1 = new IpcClient<string>(".", "test", observer).Create();
+            _client.ServerMessage += OnServerMessage;
+            _client.Disconnected += OnDisconnected;
+            _client.Start();
+        }
+
+        private void OnServerMessage(NamedPipeConnection<string, string> connection, string message)
+        {
+            richTextBox.Dispatcher.Invoke(new Action(delegate
+            {
+                AddLine("Server: " + message);
+            }));
+        }
+
+        private void OnDisconnected(NamedPipeConnection<string, string> connection)
+        {
+            richTextBox.Dispatcher.Invoke(new Action(delegate
+            {
+                AddLine("Disconnected from server");
+            }));
+        }
+
+        private void AddLine(string html)
+        {
+            richTextBox.Dispatcher.Invoke(new Action(delegate
+            {
+                richTextBox.AppendText(Environment.NewLine + "<div>" + html + "</div>");
+            }));
         }
 
         private void slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -41,13 +57,13 @@ namespace VocabularyManager
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
-            var client1 = new IpcClient<string>(".", "test", observer).Create();
-            observer.OnNext(slider.Value.ToString());
             //    SystemVolumeConfigurator volume = new SystemVolumeConfigurator();
 
             //    volume.SetVolume((float)slider.Value);
+            //if (string.IsNullOrWhiteSpace(textBoxMessage.Text))
+            //    return;
 
-
+            _client.PushMessage(slider.Value.ToString());
         }
 
         private void btnGet_Click(object sender, RoutedEventArgs e)

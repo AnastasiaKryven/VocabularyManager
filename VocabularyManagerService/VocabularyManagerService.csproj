@@ -76,10 +76,7 @@
     <Compile Include="Interfaces\IPipeStreamObserver.cs" />
     <Compile Include="Interfaces\ISystemVolumeService.cs" />
     <Compile Include="Models\Volume.cs" />
-    <Compile Include="Services\IpcClient.cs" />
-    <Compile Include="Services\IpcServer.cs" />
-    <Compile Include="Services\PipeStreamObservable.cs" />
-    <Compile Include="Services\ServerObserver.cs" />
+    <Compile Include="Services\MyServer.cs" />
     <Compile Include="Services\SystemVolumeService.cs" />
     <Compile Include="VocabularyManagerService.cs">
       <SubType>Component</SubType>
@@ -94,6 +91,11 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\NamedPipeWrapper\NamedPipeWrapper.csproj">
+      <Project>{10CC972D-18AA-4B3D-88D7-35EB22EB019E}</Project>
+      <Name>NamedPipeWrapper</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

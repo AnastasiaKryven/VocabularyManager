@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VocabularyManager", "Vocabu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VocabularyManagerService", "VocabularyManagerService\VocabularyManagerService.csproj", "{A5F09D36-2217-460D-A6E3-5CB376687459}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NamedPipeWrapper", "NamedPipeWrapper\NamedPipeWrapper.csproj", "{10CC972D-18AA-4B3D-88D7-35EB22EB019E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{A5F09D36-2217-460D-A6E3-5CB376687459}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A5F09D36-2217-460D-A6E3-5CB376687459}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A5F09D36-2217-460D-A6E3-5CB376687459}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10CC972D-18AA-4B3D-88D7-35EB22EB019E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10CC972D-18AA-4B3D-88D7-35EB22EB019E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10CC972D-18AA-4B3D-88D7-35EB22EB019E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10CC972D-18AA-4B3D-88D7-35EB22EB019E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
