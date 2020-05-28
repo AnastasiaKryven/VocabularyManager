@@ -8,9 +8,6 @@ using VocabularyManagerService.Services;
 
 namespace VocabularyManager
 {
-    /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
 
@@ -45,7 +42,7 @@ namespace VocabularyManager
         {
             richTextBox.Dispatcher.Invoke(new Action(delegate
             {
-                richTextBox.AppendText(Environment.NewLine + "<div>" + html + "</div>");
+                richTextBox.AppendText(Environment.NewLine + html);
             }));
         }
 
@@ -57,11 +54,6 @@ namespace VocabularyManager
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
-            //    SystemVolumeConfigurator volume = new SystemVolumeConfigurator();
-
-            //    volume.SetVolume((float)slider.Value);
-            //if (string.IsNullOrWhiteSpace(textBoxMessage.Text))
-            //    return;
 
             _client.PushMessage(slider.Value.ToString());
         }

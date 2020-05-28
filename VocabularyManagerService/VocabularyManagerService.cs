@@ -17,48 +17,12 @@ namespace VocabularyManagerService
 {
     public partial class VocabularyManagerService : ServiceBase
     {
-        //private readonly IpcServer<string> server;
-
-        //ISystemVolumeService systemVolume = new SystemVolumeService();
-        //public VocabularyManagerService()
-        //{
-        //    InitializeComponent();
-        //    this.CanStop = true; 
-        //    this.CanPauseAndContinue = true; 
-        //    this.AutoLog = true;
-        //    server = new IpcServer<string>("test");
-        //    File.Create(Environment.CurrentDirectory + "Log.txt");
-
-        //}
-
-        //protected override void OnStart(string[] args)
-        //{
-        //    try
-        //    {
-        //        server.Start<ServerObserver>();
-        //    }
-        //    catch (Exception e)
-        //    {
-        //        StreamWriter sw = new StreamWriter(Environment.CurrentDirectory + "Log.txt", true);
-        //        sw.Write(e.Message);
-        //    }
-        //}
-
-        //protected override void OnContinue()
-        //{
-        //    SystemVolumeService service = new SystemVolumeService();
-
-        //     service.GetVolume();
-        //}
-
-        //protected override void OnStop()
-        //{
-        //    server.Stop();
-        //}
+        
         private readonly NamedPipeServer<string> _server = new NamedPipeServer<string>("test");
         private readonly ISet<string> _clients = new HashSet<string>();
         private readonly MMDeviceEnumerator _deviceEnumerator = new MMDeviceEnumerator();
         private readonly MMDevice _playbackDevice;
+        private readonly SystemVolumeService volumeService = new SystemVolumeService();
 
 
         public VocabularyManagerService()
@@ -71,25 +35,24 @@ namespace VocabularyManagerService
             {
                 _server.PushMessage(client.Name + ": " + message);
                 Console.WriteLine(client.Name + ": " + message);
+                volumeService.SetVolume(Convert.ToSingle(message));
             };
-            _server.Start();
 
         }
 
         public void AudioEndpointVolume_OnVolumeNotification(AudioVolumeNotificationData data)
         {
             _server.PushMessage((data.MasterVolume * 100).ToString());
-            // MessageBox.Show((data.MasterVolume * 100).ToString());
         }
 
         protected override void OnStart(string[] args)
         {
-           
+            _server.Start();
         }
 
         protected override void OnStop()
         {
-            
+            _server.Stop();
         }
 
         private void OnClientConnected(NamedPipeConnection<string, string> connection)
