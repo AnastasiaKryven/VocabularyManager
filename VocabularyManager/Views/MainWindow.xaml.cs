@@ -52,19 +52,10 @@ namespace VocabularyManager
             textBox.Text = slider.Value.ToString();
         }
 
+
         private void button_Click(object sender, RoutedEventArgs e)
         {
-
             _client.PushMessage(slider.Value.ToString());
-        }
-
-        private void btnGet_Click(object sender, RoutedEventArgs e)
-        {
-            SystemVolumeConfigurator volume = new SystemVolumeConfigurator();
-
-            slider.Value = volume.GetVolume();
-
-            textBox.Text = slider.Value.ToString();
         }
     }
 }
