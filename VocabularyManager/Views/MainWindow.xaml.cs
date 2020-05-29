@@ -4,7 +4,6 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
 using VocabularyManager.Models;
-using VocabularyManager.Services;
 using VocabularyManager.ViewModel;
 using VocabularyManagerService.Services;
 
