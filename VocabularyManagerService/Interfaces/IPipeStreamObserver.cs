@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace VocabularyManagerService.Interfaces
+namespace VolumeManagerService.Interfaces
 {
     public interface IPipeStreamObserver<in T> : IObserver<T>
     {

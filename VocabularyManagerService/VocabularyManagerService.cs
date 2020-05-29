@@ -10,10 +10,10 @@ using System.Text;
 using System.Threading.Tasks;
 using NamedPipeWrapper;
 using NAudio.CoreAudioApi;
-using VocabularyManagerService.Interfaces;
-using VocabularyManagerService.Services;
+using VolumeManagerService.Interfaces;
+using VolumeManagerService.Services;
 
-namespace VocabularyManagerService
+namespace VolumeManagerService
 {
     public partial class VocabularyManagerService : ServiceBase
     {

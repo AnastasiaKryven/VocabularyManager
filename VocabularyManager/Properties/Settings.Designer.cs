@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace VocabularyManager.Properties
+namespace VolumeManager.Properties
 {
 
 

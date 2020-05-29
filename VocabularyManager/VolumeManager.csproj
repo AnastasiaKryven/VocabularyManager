@@ -136,9 +136,9 @@
       <Project>{10CC972D-18AA-4B3D-88D7-35EB22EB019E}</Project>
       <Name>NamedPipeWrapper</Name>
     </ProjectReference>
-    <ProjectReference Include="..\VocabularyManagerService\VocabularyManagerService.csproj">
+    <ProjectReference Include="..\VocabularyManagerService\VolumeManagerService.csproj">
       <Project>{A5F09D36-2217-460D-A6E3-5CB376687459}</Project>
-      <Name>VocabularyManagerService</Name>
+      <Name>VolumeManagerService</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

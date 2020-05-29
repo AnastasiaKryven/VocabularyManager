@@ -3,11 +3,11 @@ using NamedPipeWrapper;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
-using VocabularyManager.Models;
-using VocabularyManager.ViewModel;
-using VocabularyManagerService.Services;
+using VolumeManager.Models;
+using VolumeManager.ViewModel;
+using VolumeManagerService.Services;
 
-namespace VocabularyManager
+namespace VolumeManager
 {
     public partial class MainWindow : Window
     {

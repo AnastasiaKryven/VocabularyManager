@@ -4,10 +4,10 @@ using System.Windows.Controls;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using NamedPipeWrapper;
-using VocabularyManager.Models;
-using VocabularyManagerService.Services;
+using VolumeManager.Models;
+using VolumeManagerService.Services;
 
-namespace VocabularyManager.ViewModel
+namespace VolumeManager.ViewModel
 {
 
     public class MainViewModel : ViewModelBase

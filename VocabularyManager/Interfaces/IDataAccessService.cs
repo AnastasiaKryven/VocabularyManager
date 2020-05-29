@@ -4,9 +4,9 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using VocabularyManager.Models;
+using VolumeManager.Models;
 
-namespace VocabularyManager.Interfaces
+namespace VolumeManager.Interfaces
 {
     public interface IDataAccessService
     {

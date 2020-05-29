@@ -7,9 +7,9 @@ using System.ServiceProcess;
 using System.Text;
 using System.Threading.Tasks;
 using NAudio.CoreAudioApi;
-using VocabularyManagerService.Services;
+using VolumeManagerService.Services;
 
-namespace VocabularyManagerService
+namespace VolumeManagerService
 {
     static class Program
     {

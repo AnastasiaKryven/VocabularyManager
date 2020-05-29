@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29728.190
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VocabularyManager", "VocabularyManager\VocabularyManager.csproj", "{9E97024C-28DE-41C6-A030-92B54827FC62}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VolumeManager", "VocabularyManager\VolumeManager.csproj", "{9E97024C-28DE-41C6-A030-92B54827FC62}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VocabularyManagerService", "VocabularyManagerService\VocabularyManagerService.csproj", "{A5F09D36-2217-460D-A6E3-5CB376687459}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VolumeManagerService", "VocabularyManagerService\VolumeManagerService.csproj", "{A5F09D36-2217-460D-A6E3-5CB376687459}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NamedPipeWrapper", "NamedPipeWrapper\NamedPipeWrapper.csproj", "{10CC972D-18AA-4B3D-88D7-35EB22EB019E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NamedPipeWrapper", "NamedPipeWrapper\NamedPipeWrapper.csproj", "{73152691-3CDE-46DF-8D04-7117747DFFE7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{A5F09D36-2217-460D-A6E3-5CB376687459}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A5F09D36-2217-460D-A6E3-5CB376687459}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A5F09D36-2217-460D-A6E3-5CB376687459}.Release|Any CPU.Build.0 = Release|Any CPU
-		{10CC972D-18AA-4B3D-88D7-35EB22EB019E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{10CC972D-18AA-4B3D-88D7-35EB22EB019E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{10CC972D-18AA-4B3D-88D7-35EB22EB019E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{10CC972D-18AA-4B3D-88D7-35EB22EB019E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{73152691-3CDE-46DF-8D04-7117747DFFE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73152691-3CDE-46DF-8D04-7117747DFFE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73152691-3CDE-46DF-8D04-7117747DFFE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73152691-3CDE-46DF-8D04-7117747DFFE7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

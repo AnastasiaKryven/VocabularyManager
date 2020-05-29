@@ -2,7 +2,7 @@ using CommonServiceLocator;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Ioc;
 
-namespace VocabularyManager.ViewModel
+namespace VolumeManager.ViewModel
 {
     public class ViewModelLocator
     {

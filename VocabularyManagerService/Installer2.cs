@@ -7,7 +7,7 @@ using System.Linq;
 using System.ServiceProcess;
 using System.Threading.Tasks;
 
-namespace VocabularyManagerService
+namespace VolumeManagerService
 {
     [RunInstaller(true)]
     public partial class Installer2 : System.Configuration.Install.Installer

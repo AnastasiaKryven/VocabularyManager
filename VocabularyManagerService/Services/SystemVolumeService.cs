@@ -5,10 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using NAudio.CoreAudioApi;
-using VocabularyManagerService.Interfaces;
-using VocabularyManagerService.Models;
+using VolumeManagerService.Interfaces;
+using VolumeManagerService.Models;
 
-namespace VocabularyManagerService.Services
+namespace VolumeManagerService.Services
 {
     public class SystemVolumeService: ISystemVolumeService
     {

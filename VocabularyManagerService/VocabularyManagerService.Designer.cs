@@ -1,4 +1,4 @@
-﻿namespace VocabularyManagerService
+﻿namespace VolumeManagerService
 {
     partial class VocabularyManagerService
     {
