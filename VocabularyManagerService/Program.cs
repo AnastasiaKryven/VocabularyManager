@@ -13,14 +13,9 @@ namespace VocabularyManagerService
 {
     static class Program
     {
-        /// <summary>
-        /// Главная точка входа для приложения.
-        /// </summary>
-        ///
-
         static void Main()
         {
-            VocabularyManagerService service = new VocabularyManagerService();
+            var service = new VocabularyManagerService();
 
             ServiceBase[] ServicesToRun;
             ServicesToRun = new ServiceBase[]
@@ -28,15 +23,12 @@ namespace VocabularyManagerService
                 new VocabularyManagerService()
             };
 
-            // In interactive and debug mode ?
             if (Environment.UserInteractive && System.Diagnostics.Debugger.IsAttached)
             {
-                // Simulate the services execution
                 RunInteractiveServices(ServicesToRun);
             }
             else
             {
-                // Normal service execution
                 ServiceBase.Run(ServicesToRun);
             }
         }
@@ -47,10 +39,8 @@ namespace VocabularyManagerService
             Console.WriteLine("Start the services in interactive mode.");
             Console.WriteLine();
 
-            // Get the method to invoke on each service to start it
             MethodInfo onStartMethod = typeof(ServiceBase).GetMethod("OnStart", BindingFlags.Instance | BindingFlags.NonPublic);
 
-            // Start services loop
             foreach (ServiceBase service in servicesToRun)
             {
                 Console.Write("Starting {0} ... ", service.ServiceName);
@@ -63,11 +53,9 @@ namespace VocabularyManagerService
 
             Console.WriteLine();
 
-            // Get the method to invoke on each service to stop it
             MethodInfo onStopMethod = typeof(ServiceBase).GetMethod("OnStop", BindingFlags.Instance | BindingFlags.NonPublic);
 
-            // Stop loop
-            foreach (ServiceBase service in servicesToRun)
+            foreach (var service in servicesToRun)
             {
                 Console.Write("Stopping {0} ... ", service.ServiceName);
                 onStopMethod.Invoke(service, null);
@@ -77,7 +65,6 @@ namespace VocabularyManagerService
             Console.WriteLine();
             Console.WriteLine("All services are stopped.");
 
-            // Waiting a key press to not return to VS directly
             if (System.Diagnostics.Debugger.IsAttached)
             {
                 Console.WriteLine();

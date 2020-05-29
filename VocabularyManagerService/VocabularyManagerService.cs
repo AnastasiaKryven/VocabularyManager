@@ -18,7 +18,7 @@ namespace VocabularyManagerService
     public partial class VocabularyManagerService : ServiceBase
     {
         
-        private readonly NamedPipeServer<string> _server = new NamedPipeServer<string>("test");
+        private readonly NamedPipeServer<string> _server = new NamedPipeServer<string>("nana");
         private readonly ISet<string> _clients = new HashSet<string>();
         private readonly MMDeviceEnumerator _deviceEnumerator = new MMDeviceEnumerator();
         private readonly MMDevice _playbackDevice;
