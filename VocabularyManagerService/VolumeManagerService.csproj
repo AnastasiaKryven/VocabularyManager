@@ -77,11 +77,11 @@
     <Compile Include="Interfaces\ISystemVolumeService.cs" />
     <Compile Include="Models\Volume.cs" />
     <Compile Include="Services\SystemVolumeService.cs" />
-    <Compile Include="VocabularyManagerService.cs">
+    <Compile Include="VolumeManagerService.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="VocabularyManagerService.Designer.cs">
-      <DependentUpon>VocabularyManagerService.cs</DependentUpon>
+    <Compile Include="VolumeManagerService.Designer.cs">
+      <DependentUpon>VolumeManagerService.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
