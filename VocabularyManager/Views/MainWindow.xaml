@@ -27,7 +27,7 @@
         <RichTextBox HorizontalAlignment="Left" Height="149" Margin="46.8,7.6,0,0" Grid.Row="1" VerticalAlignment="Top" Width="191" Grid.Column="1" HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible">
             <FlowDocument>
                 <Paragraph>
-                    <Run Text="{Binding Path=MainTb}"/>
+                    <Run Text="{Binding Path=MainTextBox}"/>
                 </Paragraph>
             </FlowDocument>
         </RichTextBox>

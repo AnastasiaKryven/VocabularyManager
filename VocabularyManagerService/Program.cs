@@ -15,22 +15,18 @@ namespace VolumeManagerService
     {
         static void Main()
         {
-            var service = new VocabularyManagerService();
 
             ServiceBase[] ServicesToRun;
             ServicesToRun = new ServiceBase[]
             {
                 new VocabularyManagerService()
             };
-
-            if (Environment.UserInteractive && System.Diagnostics.Debugger.IsAttached)
-            {
-                RunInteractiveServices(ServicesToRun);
-            }
-            else
-            {
+#if DEBUG
+            RunInteractiveServices(ServicesToRun);
+#else            
+           
                 ServiceBase.Run(ServicesToRun);
-            }
+#endif
         }
 
         private static void RunInteractiveServices(ServiceBase[] servicesToRun)

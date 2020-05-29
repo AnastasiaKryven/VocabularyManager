@@ -16,7 +16,7 @@ namespace VolumeManager.ViewModel
         private readonly NamedPipeClient<string> _client = new NamedPipeClient<string>("nana");
         private VolumeModel volumeModel;
         private float currentValue;
-        private string mainTb;
+        private string mainTextBox;
 
         public ObservableCollection<VolumeModel> Volume
         {
@@ -54,13 +54,13 @@ namespace VolumeManager.ViewModel
 
         public string SystemValue { get; set; }
 
-        public string MainTb
+        public string MainTextBox
         {
-            get { return this.mainTb; }
+            get { return this.mainTextBox; }
             set
             {
-                mainTb = value;
-                RaisePropertyChanged("MainTb");
+                mainTextBox = value;
+                RaisePropertyChanged("MainTextBox");
             }
         }
 
@@ -94,12 +94,12 @@ namespace VolumeManager.ViewModel
 
         private void OnServerMessage(NamedPipeConnection<string, string> connection, string message)
         {
-            MainTb += Environment.NewLine + "Server" + message;
+            MainTextBox += Environment.NewLine + "Server" + message;
         }
 
         private void OnDisconnected(NamedPipeConnection<string, string> connection)
         {
-            MainTb += Environment.NewLine + "Disconnected from server";
+            MainTextBox += Environment.NewLine + "Disconnected from server";
         }
     }
 }
