@@ -12,7 +12,5 @@ namespace VocabularyManagerService.Interfaces
         float GetVolume();
 
         void SetVolume(float volumeLevel);
-
-        void AudioEndpointVolume_OnVolumeNotification(AudioVolumeNotificationData data);
     }
 }
