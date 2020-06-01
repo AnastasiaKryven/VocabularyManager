@@ -5,16 +5,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using NAudio.CoreAudioApi;
-using VolumeManagerService.Interfaces;
 using VolumeManagerService.Models;
 
 namespace VolumeManagerService.Services
 {
-    public class SystemVolumeService: ISystemVolumeService
+    public class SystemVolumeService : ISystemVolumeService
     {
         private readonly MMDeviceEnumerator _deviceEnumerator = new MMDeviceEnumerator();
         private readonly MMDevice _playbackDevice;
         private List<Volume> Volumes = new List<Volume>();
+        public delegate void VolHandler(string data);
+        public event VolHandler VolumeData;
 
         public SystemVolumeService()
         {
@@ -45,9 +46,6 @@ namespace VolumeManagerService.Services
         {
             VolumeData?.Invoke(data);
         }
-
-        public delegate void VolHandler(string data);
-        public event VolHandler VolumeData;
 
     }
 }

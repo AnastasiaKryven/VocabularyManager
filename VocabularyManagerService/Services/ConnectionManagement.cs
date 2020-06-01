@@ -9,9 +9,9 @@ using VolumeManagerService.Services;
 
 namespace VocabularyManagerService.Services
 {
-    public class ConnectionManagement
+    public class ConnectionManagement : IConnectionManagement
     {
-        public readonly NamedPipeServer<string> Server = new NamedPipeServer<string>("nana");
+        private readonly NamedPipeServer<string> _server = new NamedPipeServer<string>("nana");
         private readonly ISet<string> _clients = new HashSet<string>();
 
         public delegate void VolumeHandler(string data);
@@ -19,40 +19,55 @@ namespace VocabularyManagerService.Services
 
         public ConnectionManagement()
         {
-            Server.ClientConnected += OnClientConnected;
-            Server.ClientDisconnected += OnClientDisconnected;
-            Server.ClientMessage += ServerOnClientMessage();
+            _server.ClientConnected += OnClientConnected;
+            _server.ClientDisconnected += OnClientDisconnected;
+            _server.ClientMessage += ServerOnClientMessage();
         }
 
-        private ConnectionMessageEventHandler<string, string> ServerOnClientMessage()
+        public ConnectionMessageEventHandler<string, string> ServerOnClientMessage()
         {
             return (client, message) =>
             {
                 string messageValue = client.Name + ": " + message;
-                Server.PushMessage(messageValue);
+                _server.PushMessage(messageValue);
                 Console.WriteLine(messageValue);
                 SetVolume(message);
             };
         }
 
-        private void SetVolume(string data)
+        public void SetVolume(string data)
         {
             VolumeData?.Invoke(data);
         }
 
-        private void OnClientConnected(NamedPipeConnection<string, string> connection)
+        public void OnClientConnected(NamedPipeConnection<string, string> connection)
         {
             _clients.Add(connection.Name);
             Console.WriteLine(connection.Name + " connected!");
-            Server.PushMessage(connection.Name + " connected!");
+            _server.PushMessage(connection.Name + " connected!");
             connection.PushMessage("Welcome!  You are now connected to the server.");
         }
 
-        private void OnClientDisconnected(NamedPipeConnection<string, string> connection)
+        public void OnClientDisconnected(NamedPipeConnection<string, string> connection)
         {
             _clients.Remove(connection.Name);
             Console.WriteLine(connection.Name + " disconnected!");
-            Server.PushMessage(connection.Name + " disconnected!");
+            _server.PushMessage(connection.Name + " disconnected!");
+        }
+
+        public void Start()
+        {
+            _server.Start();
+        }
+
+        public void Stop()
+        {
+            _server.Stop();
+        }
+
+        public void SendMessage(string message)
+        {
+            _server.PushMessage(message);
         }
     }
 }

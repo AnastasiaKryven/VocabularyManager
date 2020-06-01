@@ -4,6 +4,7 @@ using System.Windows.Controls;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using NamedPipeWrapper;
+using VocabularyManager.Services;
 using VolumeManager.Models;
 using VolumeManagerService.Services;
 
@@ -12,8 +13,9 @@ namespace VolumeManager.ViewModel
 
     public class MainViewModel : ViewModelBase
     {
+        ConnectionManagement connection = new ConnectionManagement();
+
         private ObservableCollection<VolumeModel> volumeModels;
-        private readonly NamedPipeClient<string> _client = new NamedPipeClient<string>("nana");
         private VolumeModel volumeModel;
         private float currentValue;
         private string mainTextBox;
@@ -66,41 +68,25 @@ namespace VolumeManager.ViewModel
 
         public MainViewModel()
         {
-            _client.ServerMessage += OnServerMessage;
-            _client.Disconnected += OnDisconnected;
-            _client.Start();
-
             VolumeModel = new VolumeModel();
             Volume = new ObservableCollection<VolumeModel>();
             ApplyCommand = new RelayCommand(Apply);
             GetVolumeCommand = new RelayCommand(GetVolume);
+            MainTextBox += connection.MessageText;
+            SystemValue = connection.SystemValue;
         }
 
         private void Apply()
         {
-            _client.PushMessage(currentValue.ToString());
+            connection.SendMessage(currentValue.ToString());
         }
 
         private void GetVolume()
         {
-            //SystemVolumeService volume = new SystemVolumeService();
-
-            //CurrentValue = volume.GetVolume();
-
-            //SystemValue = CurrentValue.ToString();
-            
-            _client.PushMessage(SystemValue);
+            connection.SendMessage(SystemValue);
         }
 
-        private void OnServerMessage(NamedPipeConnection<string, string> connection, string message)
-        {
-            MainTextBox += Environment.NewLine + "Server" + message;
-            SystemValue = message;
-        }
 
-        private void OnDisconnected(NamedPipeConnection<string, string> connection)
-        {
-            MainTextBox += Environment.NewLine + "Disconnected from server";
-        }
+
     }
 }
