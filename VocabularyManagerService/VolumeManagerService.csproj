@@ -76,6 +76,7 @@
     <Compile Include="Interfaces\IPipeStreamObserver.cs" />
     <Compile Include="Interfaces\ISystemVolumeService.cs" />
     <Compile Include="Models\Volume.cs" />
+    <Compile Include="Services\ConnectionManagement.cs" />
     <Compile Include="Services\SystemVolumeService.cs" />
     <Compile Include="VolumeManagerService.cs">
       <SubType>Component</SubType>

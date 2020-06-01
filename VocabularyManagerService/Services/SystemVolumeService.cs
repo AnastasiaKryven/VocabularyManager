@@ -19,6 +19,7 @@ namespace VolumeManagerService.Services
         public SystemVolumeService()
         {
             _playbackDevice = _deviceEnumerator.GetDefaultAudioEndpoint(DataFlow.Render, Role.Multimedia);
+            _playbackDevice.AudioEndpointVolume.OnVolumeNotification += AudioEndpointVolume_OnVolumeNotification;
         }
 
         public float GetVolume()
@@ -33,5 +34,20 @@ namespace VolumeManagerService.Services
 
             _playbackDevice.AudioEndpointVolume.MasterVolumeLevelScalar = volumeLevel / 100.0f;
         }
+
+
+        public void AudioEndpointVolume_OnVolumeNotification(AudioVolumeNotificationData data)
+        {
+            SendToServer((data.MasterVolume * 100).ToString());
+        }
+
+        private void SendToServer(string data)
+        {
+            VolumeData?.Invoke(data);
+        }
+
+        public delegate void VolHandler(string data);
+        public event VolHandler VolumeData;
+
     }
 }

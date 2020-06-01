@@ -83,18 +83,19 @@ namespace VolumeManager.ViewModel
 
         private void GetVolume()
         {
-            SystemVolumeService volume = new SystemVolumeService();
+            //SystemVolumeService volume = new SystemVolumeService();
 
-            CurrentValue = volume.GetVolume();
+            //CurrentValue = volume.GetVolume();
 
-            SystemValue = CurrentValue.ToString();
-
+            //SystemValue = CurrentValue.ToString();
+            
             _client.PushMessage(SystemValue);
         }
 
         private void OnServerMessage(NamedPipeConnection<string, string> connection, string message)
         {
             MainTextBox += Environment.NewLine + "Server" + message;
+            SystemValue = message;
         }
 
         private void OnDisconnected(NamedPipeConnection<string, string> connection)
