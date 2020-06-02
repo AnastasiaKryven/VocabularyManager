@@ -27,18 +27,19 @@ namespace VocabularyManager.Services
         }
 
         private void OnServerMessage(NamedPipeConnection<string, string> connection, string message)
-        {
-            MessageText += Environment.NewLine + "Server" + message;
-            SystemValue = message;
+        { 
+            GetMessage(message);
         }
 
         private void OnDisconnected(NamedPipeConnection<string, string> connection)
         {
-            MessageText += Environment.NewLine + "Disconnected from server";
+            GetMessage(Environment.NewLine + "Disconnected from server");
         }
 
-        public string MessageText { get; set; }
+        public void GetMessage(string message)
+        {
+            Message?.Invoke(message);
+        }
 
-        public string SystemValue { get; set; }
     }
 }

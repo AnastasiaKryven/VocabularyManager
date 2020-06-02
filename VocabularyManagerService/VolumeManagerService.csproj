@@ -79,8 +79,8 @@
     </Compile>
     <Compile Include="Models\Volume.cs" />
     <Compile Include="Services\ConnectionManagement.cs" />
-    <Compile Include="Services\IConnectionManagement.cs" />
-    <Compile Include="Services\ISystemVolumeService.cs" />
+    <Compile Include="Interfaces\IConnectionManagement.cs" />
+    <Compile Include="Interfaces\ISystemVolumeService.cs" />
     <Compile Include="Services\SystemVolumeService.cs" />
     <Compile Include="VolumeManagerService.cs">
       <SubType>Component</SubType>
@@ -101,8 +101,6 @@
       <Name>NamedPipeWrapper</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Interfaces\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

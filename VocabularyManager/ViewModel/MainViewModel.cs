@@ -72,8 +72,13 @@ namespace VolumeManager.ViewModel
             Volume = new ObservableCollection<VolumeModel>();
             ApplyCommand = new RelayCommand(Apply);
             GetVolumeCommand = new RelayCommand(GetVolume);
-            MainTextBox += connection.MessageText;
-            SystemValue = connection.SystemValue;
+            connection.Message += Display;
+        }
+
+        private void Display(string message)
+        {
+            MainTextBox += Environment.NewLine + "Server: " + message;
+            SystemValue = message;
         }
 
         private void Apply()
@@ -85,8 +90,5 @@ namespace VolumeManager.ViewModel
         {
             connection.SendMessage(SystemValue);
         }
-
-
-
     }
 }
