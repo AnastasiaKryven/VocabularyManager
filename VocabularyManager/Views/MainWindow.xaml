@@ -6,7 +6,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:VolumeManager"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="600"
+        Title="MainWindow" Height="400" Width="500"
     DataContext="{Binding Main, Source={StaticResource Locator}}">
     <Grid>
         <Grid.RowDefinitions>
@@ -19,12 +19,12 @@
             <ColumnDefinition Width="300"></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <TextBox x:Name="textBox" Margin="78,80,9,5" IsReadOnly="True" Text ="{Binding SystemValue}"/>
-        <Button x:Name="button" Content="Apply" Margin="9.8,70,39.6,0" Grid.Column="2"  Height="30" VerticalAlignment="Top" Command="{Binding ApplyCommand}" CommandParameter="{Binding CurrentValue}"/>
-        <Label x:Name="label" Content="Audio" HorizontalAlignment="Left" Grid.Column="1" Margin="0,50,0,200" Grid.RowSpan="2" />
-        <Slider Value="{Binding CurrentValue}" Minimum="0" Maximum="100" SelectionStart="0" x:Name="slider" Grid.Column="1" Grid.Row="0" Margin="0,80,150,200"  Grid.ColumnSpan="2" Grid.RowSpan="2" />
+        <TextBox x:Name="textBox" IsReadOnly="True" Text ="{Binding SystemValue}" Grid.Column="0" Grid.Row="0" Height="30" VerticalAlignment="Bottom" Width="80"/>
+        <Button x:Name="button" Content="Apply" Grid.Column="2"  Height="30" VerticalAlignment="Bottom" Command="{Binding ApplyCommand}" CommandParameter="{Binding CurrentValue}"/>
+        <Label x:Name="label" Content="Audio" HorizontalAlignment="Center" Grid.Column="1" Height="30"/>
+        <Slider Value="{Binding CurrentValue}" Minimum="0" Maximum="100" SelectionStart="0" x:Name="slider" Grid.Column="1" Grid.Row="0" Height="20" VerticalAlignment="Bottom" />
         <!--<Button x:Name="btnGet" Content="Get" Grid.Row="2" Grid.Column="1" Margin="50,30,50,50" Command="{Binding GetVolumeCommand}"/>-->
-        <RichTextBox IsReadOnly="True" HorizontalAlignment="Left" Height="149" Margin="46.8,7.6,0,0" Grid.Row="1" VerticalAlignment="Top" Width="191" Grid.Column="1" HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible">
+        <RichTextBox IsReadOnly="True"  Grid.Row="1"  Grid.Column="1" HorizontalScrollBarVisibility="Visible" VerticalScrollBarVisibility="Visible">
             <FlowDocument>
                 <Paragraph>
                     <Run Text="{Binding Path=MainTextBox}"/>
