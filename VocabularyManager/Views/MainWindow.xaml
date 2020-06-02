@@ -19,7 +19,7 @@
             <ColumnDefinition Width="300"></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <TextBox x:Name="textBox" Grid.Row="1" Grid.Column="1" Margin="46,171,62,4" IsReadOnly="True" Text ="{Binding SystemValue}"/>
+        <!--<TextBox x:Name="textBox" Grid.Row="1" Grid.Column="1" Margin="46,171,62,4" IsReadOnly="True" Text ="{Binding SystemValue}"/>-->
         <Button x:Name="button" Content="Apply" Margin="9.8,70,39.6,0" Grid.Column="2"  Height="30" VerticalAlignment="Top" Command="{Binding ApplyCommand}" CommandParameter="{Binding CurrentValue}"/>
         <Label x:Name="label" Content="Audio" HorizontalAlignment="Left" Grid.Column="1" Margin="0,50,0,200" Grid.RowSpan="2" />
         <Slider Value="{Binding CurrentValue}" Minimum="0" Maximum="100" SelectionStart="0" x:Name="slider" Grid.Column="1" Grid.Row="0" Margin="0,80,150,200"  Grid.ColumnSpan="2" Grid.RowSpan="2" />

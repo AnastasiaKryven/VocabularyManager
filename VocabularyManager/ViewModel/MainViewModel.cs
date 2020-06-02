@@ -78,7 +78,8 @@ namespace VolumeManager.ViewModel
         private void Display(string message)
         {
             MainTextBox += Environment.NewLine + "Server: " + message;
-            SystemValue = message;
+            CurrentValue = Convert.ToSingle(message);
+            SystemValue = CurrentValue.ToString();
         }
 
         private void Apply()
@@ -88,6 +89,7 @@ namespace VolumeManager.ViewModel
 
         private void GetVolume()
         {
+            
             connection.SendMessage(SystemValue);
         }
     }
