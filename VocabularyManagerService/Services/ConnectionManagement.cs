@@ -11,7 +11,7 @@ namespace VocabularyManagerService.Services
 {
     public class ConnectionManagement : IConnectionManagement
     {
-        private readonly NamedPipeServer<string> _server = new NamedPipeServer<string>("nana");
+        private readonly NamedPipeServer<string> _server = new NamedPipeServer<string>("pipes");
         private readonly ISet<string> _clients = new HashSet<string>();
 
         public delegate void VolumeHandler(string data);

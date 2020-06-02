@@ -9,7 +9,7 @@ namespace VocabularyManager.Services
 {
     public class ConnectionManagement
     {
-        private readonly NamedPipeClient<string> _client = new NamedPipeClient<string>("nana");
+        private readonly NamedPipeClient<string> _client = new NamedPipeClient<string>("pipes");
 
         public delegate void MessageHandler(string message);
         public event MessageHandler Message;

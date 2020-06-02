@@ -54,7 +54,16 @@ namespace VolumeManager.ViewModel
 
         public RelayCommand GetVolumeCommand { get; set; }
 
-        public string SystemValue { get; set; }
+        private string systemValue;
+        public string SystemValue
+        {
+            get { return systemValue; }
+            set
+            {
+                systemValue = value;
+                RaisePropertyChanged("SystemValue");
+            }
+        } 
 
         public string MainTextBox
         {
