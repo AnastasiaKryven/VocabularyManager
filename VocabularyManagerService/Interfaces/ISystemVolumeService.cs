@@ -5,8 +5,8 @@ namespace VolumeManagerService.Services
     public interface ISystemVolumeService
     {
         event SystemVolumeService.VolHandler VolumeData;
-        float GetVolume();
-        void SetVolume(float volumeLevel);
+        int GetVolume();
+        void SetVolume(int volumeLevel);
         void AudioEndpointVolume_OnVolumeNotification(AudioVolumeNotificationData data);
     }
 }

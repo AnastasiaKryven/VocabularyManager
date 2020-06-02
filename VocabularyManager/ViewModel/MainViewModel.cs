@@ -15,10 +15,10 @@ namespace VolumeManager.ViewModel
         //private readonly ConnectionManagement _connection = new ConnectionManagement();
         private readonly IConnectionManagement _connection;
 
-        private float _currentValue;
+        private int _currentValue;
         private string _mainTextBox;
     
-        public float CurrentValue
+        public int CurrentValue
         {
             get { return _currentValue; }
             set
@@ -64,7 +64,7 @@ namespace VolumeManager.ViewModel
         private void Display(string message)
         {
             MainTextBox += Environment.NewLine + "Server: " + message;
-            CurrentValue = Convert.ToSingle(message);
+            CurrentValue = Convert.ToInt32(message);
             SystemValue = CurrentValue.ToString();
         }
 

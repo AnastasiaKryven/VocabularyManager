@@ -25,7 +25,7 @@ namespace VolumeManagerService
 
         private void SetVolume(string message)
         {
-            volumeService.SetVolume(Convert.ToSingle(message));
+            volumeService.SetVolume(Convert.ToInt32(message));
         }
 
         protected override void OnStart(string[] args)

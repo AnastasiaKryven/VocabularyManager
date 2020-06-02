@@ -22,12 +22,12 @@ namespace VolumeManagerService.Services
             _playbackDevice.AudioEndpointVolume.OnVolumeNotification += AudioEndpointVolume_OnVolumeNotification;
         }
 
-        public float GetVolume()
+        public int GetVolume()
         {
-            return (float)(_playbackDevice.AudioEndpointVolume.MasterVolumeLevelScalar * 100);
+            return (int)(_playbackDevice.AudioEndpointVolume.MasterVolumeLevelScalar * 100);
         }
 
-        public void SetVolume(float volumeLevel)
+        public void SetVolume(int volumeLevel)
         {
             if (volumeLevel < 0 || volumeLevel > 100)
                 throw new ArgumentException("Volume must be between 0 and 100!");
@@ -45,6 +45,5 @@ namespace VolumeManagerService.Services
         {
             VolumeData?.Invoke(data);
         }
-
     }
 }
