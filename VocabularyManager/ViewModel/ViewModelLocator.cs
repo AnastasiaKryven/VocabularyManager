@@ -1,6 +1,7 @@
 using CommonServiceLocator;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Ioc;
+using VocabularyManager.Services;
 
 namespace VolumeManager.ViewModel
 {
@@ -12,6 +13,8 @@ namespace VolumeManager.ViewModel
             ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
 
             SimpleIoc.Default.Register<MainViewModel>();
+
+            SimpleIoc.Default.Register<IConnectionManagement, ConnectionManagement>();
         }
 
         public MainViewModel Main

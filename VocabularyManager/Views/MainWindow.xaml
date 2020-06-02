@@ -19,8 +19,8 @@
             <ColumnDefinition Width="300"></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <TextBox x:Name="textBox" IsReadOnly="True" Text ="{Binding SystemValue}" Grid.Column="0" Grid.Row="0" Height="30" VerticalAlignment="Bottom" Width="80"/>
-        <Button x:Name="button" Content="Apply" Grid.Column="2"  Height="30" VerticalAlignment="Bottom" Command="{Binding ApplyCommand}" CommandParameter="{Binding CurrentValue}"/>
+        <TextBox x:Name="textBox" IsReadOnly="True" Text ="{Binding SystemValue}" Grid.Column="0" Grid.Row="0" Height="30" VerticalAlignment="Bottom" Width="80" TextAlignment="Center"/>
+        <Button x:Name="button" Content="Apply" Grid.Column="2" Width="70" Height="30" VerticalAlignment="Bottom" Command="{Binding ApplyCommand}" CommandParameter="{Binding CurrentValue}"/>
         <Label x:Name="label" Content="Audio" HorizontalAlignment="Center" Grid.Column="1" Height="30"/>
         <Slider Value="{Binding CurrentValue}" Minimum="0" Maximum="100" SelectionStart="0" x:Name="slider" Grid.Column="1" Grid.Row="0" Height="20" VerticalAlignment="Bottom" />
         <!--<Button x:Name="btnGet" Content="Get" Grid.Row="2" Grid.Column="1" Margin="50,30,50,50" Command="{Binding GetVolumeCommand}"/>-->

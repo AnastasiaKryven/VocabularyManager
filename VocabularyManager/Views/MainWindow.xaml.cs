@@ -3,7 +3,6 @@ using NamedPipeWrapper;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
-using VolumeManager.Models;
 using VolumeManager.ViewModel;
 using VolumeManagerService.Services;
 

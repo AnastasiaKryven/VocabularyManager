@@ -5,7 +5,6 @@ using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using NamedPipeWrapper;
 using VocabularyManager.Services;
-using VolumeManager.Models;
 using VolumeManagerService.Services;
 
 namespace VolumeManager.ViewModel
@@ -13,40 +12,19 @@ namespace VolumeManager.ViewModel
 
     public class MainViewModel : ViewModelBase
     {
-        ConnectionManagement connection = new ConnectionManagement();
+        //private readonly ConnectionManagement _connection = new ConnectionManagement();
+        private readonly IConnectionManagement _connection;
 
-        private ObservableCollection<VolumeModel> volumeModels;
-        private VolumeModel volumeModel;
-        private float currentValue;
-        private string mainTextBox;
-
-        public ObservableCollection<VolumeModel> Volume
-        {
-            get { return volumeModels; }
-            set
-            {
-                volumeModels = value;
-                RaisePropertyChanged("Volumes");
-            }
-        }
-
-        public VolumeModel VolumeModel
-        {
-            get { return volumeModel; }
-            set
-            {
-                volumeModel = value;
-                RaisePropertyChanged("Volume");
-            }
-        }
-
+        private float _currentValue;
+        private string _mainTextBox;
+    
         public float CurrentValue
         {
-            get { return currentValue; }
+            get { return _currentValue; }
             set
             {
-                currentValue = value;
-                RaisePropertyChanged("CurrentValue");
+                _currentValue = value;
+                RaisePropertyChanged(nameof(CurrentValue));
             }
         }
 
@@ -54,34 +32,33 @@ namespace VolumeManager.ViewModel
 
         public RelayCommand GetVolumeCommand { get; set; }
 
-        private string systemValue;
+        private string _systemValue;
         public string SystemValue
         {
-            get { return systemValue; }
+            get { return _systemValue; }
             set
             {
-                systemValue = value;
-                RaisePropertyChanged("SystemValue");
+                _systemValue = value;
+                RaisePropertyChanged(nameof(SystemValue));
             }
         } 
 
         public string MainTextBox
         {
-            get { return this.mainTextBox; }
+            get { return this._mainTextBox; }
             set
             {
-                mainTextBox = value;
-                RaisePropertyChanged("MainTextBox");
+                _mainTextBox = value;
+                RaisePropertyChanged(nameof(MainTextBox));
             }
         }
 
-        public MainViewModel()
+        public MainViewModel(IConnectionManagement connectionManagement)
         {
-            VolumeModel = new VolumeModel();
-            Volume = new ObservableCollection<VolumeModel>();
+            this._connection = connectionManagement;
             ApplyCommand = new RelayCommand(Apply);
             GetVolumeCommand = new RelayCommand(GetVolume);
-            connection.Message += Display;
+            _connection.Message += Display;
         }
 
         private void Display(string message)
@@ -93,13 +70,12 @@ namespace VolumeManager.ViewModel
 
         private void Apply()
         {
-            connection.SendMessage(currentValue.ToString());
+            _connection.SendMessage(_currentValue.ToString());
         }
 
         private void GetVolume()
         {
-            
-            connection.SendMessage(SystemValue);
+            _connection.SendMessage(SystemValue);
         }
     }
 }

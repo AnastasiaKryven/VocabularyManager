@@ -7,7 +7,7 @@ using NamedPipeWrapper;
 
 namespace VocabularyManager.Services
 {
-    public class ConnectionManagement
+    public class ConnectionManagement : IConnectionManagement
     {
         private readonly NamedPipeClient<string> _client = new NamedPipeClient<string>("pipes");
 
@@ -27,7 +27,7 @@ namespace VocabularyManager.Services
         }
 
         private void OnServerMessage(NamedPipeConnection<string, string> connection, string message)
-        { 
+        {
             GetMessage(message);
         }
 
@@ -40,6 +40,5 @@ namespace VocabularyManager.Services
         {
             Message?.Invoke(message);
         }
-
     }
 }

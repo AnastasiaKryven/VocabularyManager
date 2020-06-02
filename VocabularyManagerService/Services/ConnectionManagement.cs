@@ -45,7 +45,7 @@ namespace VocabularyManagerService.Services
             _clients.Add(connection.Name);
             Console.WriteLine(connection.Name + " connected!");
             _server.PushMessage(connection.Name + " connected!");
-            connection.PushMessage("Welcome!  You are now connected to the server.");
+            connection.PushMessage("Welcome!  You are now connected to the server...");
         }
 
         public void OnClientDisconnected(NamedPipeConnection<string, string> connection)

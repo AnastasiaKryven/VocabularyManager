@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using NAudio.CoreAudioApi;
-using VolumeManagerService.Models;
 
 namespace VolumeManagerService.Services
 {
@@ -13,7 +12,7 @@ namespace VolumeManagerService.Services
     {
         private readonly MMDeviceEnumerator _deviceEnumerator = new MMDeviceEnumerator();
         private readonly MMDevice _playbackDevice;
-        private List<Volume> Volumes = new List<Volume>();
+
         public delegate void VolHandler(string data);
         public event VolHandler VolumeData;
 
