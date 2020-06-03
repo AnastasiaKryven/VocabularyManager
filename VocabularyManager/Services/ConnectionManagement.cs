@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NamedPipeWrapper;
+using VocabularyManagerService.Commands;
+using VocabularyManagerService.Interfaces;
 
 namespace VocabularyManager.Services
 {
@@ -13,6 +15,7 @@ namespace VocabularyManager.Services
 
         public delegate void MessageHandler(string message);
         public event MessageHandler Message;
+        private ICommand _command;
 
         public ConnectionManagement()
         {

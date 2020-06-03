@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 using NAudio.CoreAudioApi;
 using VocabularyManagerService.Services;
 using VolumeManagerService.Services;
+using VocabularyManagerService.Interfaces;
+using VocabularyManagerService.Commands;
 
 namespace VolumeManagerService
 {
@@ -19,6 +21,10 @@ namespace VolumeManagerService
 
             container.Register<IConnectionManagement, ConnectionManagement>();
             container.Register<ISystemVolumeService, SystemVolumeService>();
+
+            //container.Register<ICommand, Commander>();
+            //container.Register<ICommand, SetAudioCommand>();
+
             container.Verify();
 
             ServiceBase[] ServicesToRun;

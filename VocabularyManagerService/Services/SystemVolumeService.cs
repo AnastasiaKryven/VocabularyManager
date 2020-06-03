@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using NAudio.CoreAudioApi;
+using VocabularyManagerService.Interfaces;
 
 namespace VolumeManagerService.Services
 {
@@ -15,6 +16,7 @@ namespace VolumeManagerService.Services
 
         public delegate void VolHandler(string data);
         public event VolHandler VolumeData;
+        private ICommand command;
 
         public SystemVolumeService()
         {
@@ -39,6 +41,7 @@ namespace VolumeManagerService.Services
         public void AudioEndpointVolume_OnVolumeNotification(AudioVolumeNotificationData data)
         {
             SendToServer((data.MasterVolume * 100).ToString());
+
         }
 
         private void SendToServer(string data)

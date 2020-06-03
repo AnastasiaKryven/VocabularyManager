@@ -37,10 +37,6 @@ namespace VolumeManagerService
         {
             connection.Stop();
         }
-
-
     }
-
-
 }
 

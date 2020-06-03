@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using NamedPipeWrapper;
 using NAudio.CoreAudioApi;
+using VocabularyManagerService.Commands;
+using VocabularyManagerService.Interfaces;
 using VolumeManagerService.Services;
 
 namespace VocabularyManagerService.Services
@@ -16,12 +18,13 @@ namespace VocabularyManagerService.Services
 
         public delegate void VolumeHandler(string data);
         public event VolumeHandler VolumeData;
+        private ICommand _command;
 
         public ConnectionManagement()
         {
             _server.ClientConnected += OnClientConnected;
             _server.ClientDisconnected += OnClientDisconnected;
-            _server.ClientMessage += ServerOnClientMessage();
+            _server.ClientMessage += ServerOnClientMessage();           
         }
 
         public ConnectionMessageEventHandler<string, string> ServerOnClientMessage()
@@ -31,11 +34,15 @@ namespace VocabularyManagerService.Services
                 string messageValue = client.Name + ": " + message;
                 _server.PushMessage(messageValue);
                 Console.WriteLine(messageValue);
-                SetVolume(message);
+
+                IncomeValue(message);
+                _command = new Commander(message);
+                _command.Execute();
+                Console.WriteLine("Command");
             };
         }
 
-        public void SetVolume(string data)
+        public void IncomeValue(string data)
         {
             VolumeData?.Invoke(data);
         }

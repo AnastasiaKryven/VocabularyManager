@@ -12,7 +12,6 @@ namespace VolumeManager.ViewModel
 
     public class MainViewModel : ViewModelBase
     {
-        //private readonly ConnectionManagement _connection = new ConnectionManagement();
         private readonly IConnectionManagement _connection;
 
         private int _currentValue;
