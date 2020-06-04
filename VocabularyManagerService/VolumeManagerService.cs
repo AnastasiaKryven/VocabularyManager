@@ -9,8 +9,9 @@ namespace VolumeManagerService
     {
         private readonly IConnectionManagement connection;
 
-        public VocabularyManagerService(IConnectionManagement connection)
+        public VocabularyManagerService(IConnectionManagement connection, ISystemVolumeService volumeService)
         {
+            //this._volumeService = volumeService;
             this.connection = connection;
         }
 

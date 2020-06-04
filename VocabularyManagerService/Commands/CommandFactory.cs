@@ -13,7 +13,8 @@ namespace VocabularyManagerService.Commands
             _commands = new Dictionary<string, Func<ICommand>>
                         {
                             {"Audio", () => new SetAudioCommand()},
-                            //{"AudioServerValue", () => new GetAudioCommand()}
+
+                            {"AudioServerValue", () => new GetAudioCommand()}
                         };
         }
 

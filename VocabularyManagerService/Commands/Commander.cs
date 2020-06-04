@@ -12,9 +12,8 @@ namespace VocabularyManagerService.Commands
     {
         private ICommand _command;
 
-        public Commander(ICommand command)
+        public Commander()
         {
-            this._command = command;
         }
 
         public void Execute(string message)
