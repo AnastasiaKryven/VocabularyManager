@@ -74,7 +74,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Commands\Commander.cs" />
+    <Compile Include="Commands\CommandFactory.cs" />
     <Compile Include="Commands\GetAudioCommand.cs" />
+    <Compile Include="Commands\ICommander.cs" />
     <Compile Include="Commands\SetAudioCommand.cs" />
     <Compile Include="Interfaces\ICommand.cs" />
     <Compile Include="Models\Volume.cs" />

@@ -8,6 +8,6 @@ namespace VocabularyManagerService.Interfaces
 {
     public interface ICommand
     {
-        void Execute();
+        void Execute(string message);
     }
 }

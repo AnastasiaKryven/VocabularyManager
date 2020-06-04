@@ -17,12 +17,13 @@ namespace VocabularyManagerService.Services
         private readonly NamedPipeServer<string> _server = new NamedPipeServer<string>("pipes");
         private readonly ISet<string> _clients = new HashSet<string>();
 
-        public delegate void VolumeHandler(string data);
-        public event VolumeHandler VolumeData;
         private ICommand _command;
+        private ICommander _commander;
 
-        public ConnectionManagement()
+        public ConnectionManagement(ICommand command, ICommander commander)
         {
+            this._command = command;
+            this._commander = commander;
             _server.ClientConnected += OnClientConnected;
             _server.ClientDisconnected += OnClientDisconnected;
             _server.ClientMessage += ServerOnClientMessage();           
@@ -36,9 +37,7 @@ namespace VocabularyManagerService.Services
                 _server.PushMessage(messageValue);
                 Console.WriteLine(messageValue);
                 var json = JsonConvert.DeserializeObject(message);
-                _command = new Commander(message);
-                _command.Execute();
-                Console.WriteLine("Command");
+                _commander.Execute(message);
             };
         }
 

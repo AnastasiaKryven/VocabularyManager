@@ -10,19 +10,18 @@ namespace VocabularyManagerService.Commands
 {
     public class SetAudioCommand : ICommand
     {
-        private string _message;
-        private ISystemVolumeService _volumeService;
+        private string message;
+        private ISystemVolumeService _volumeService = new SystemVolumeService();
 
-        public SetAudioCommand(string message)
+        public SetAudioCommand()
         {
-            _volumeService = new SystemVolumeService();
-            this._message = message;
         }
 
-        public void Execute()
+        public void Execute(string message)
         {
-            Console.WriteLine("Command " + _message);
-            _volumeService.SetVolume(Convert.ToInt32(_message));
+            this.message = message;
+            Console.WriteLine("Command " + message);
+            _volumeService.SetVolume(Convert.ToInt32(message));
         }
     }
 }

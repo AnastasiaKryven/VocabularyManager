@@ -10,6 +10,7 @@ using VocabularyManagerService.Services;
 using VolumeManagerService.Services;
 using VocabularyManagerService.Interfaces;
 using VocabularyManagerService.Commands;
+using SimpleInjector;
 
 namespace VolumeManagerService
 {
@@ -22,8 +23,9 @@ namespace VolumeManagerService
             container.Register<IConnectionManagement, ConnectionManagement>();
             container.Register<ISystemVolumeService, SystemVolumeService>();
 
-            //container.Register<ICommand, Commander>();
-            //container.Register<ICommand, SetAudioCommand>();
+            container.Register<ICommander, Commander>();
+            container.Register<ICommand, SetAudioCommand>();
+            //container.Register<ICommand, GetAudioCommand>();
 
             container.Verify();
 

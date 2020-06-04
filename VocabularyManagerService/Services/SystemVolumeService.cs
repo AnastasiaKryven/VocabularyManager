@@ -50,8 +50,6 @@ namespace VolumeManagerService.Services
             };
 
             var json = JsonConvert.SerializeObject(volume);
-            _command = new Commander(json);
-            _command.Execute();
         }
     }
 }

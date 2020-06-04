@@ -17,8 +17,6 @@ namespace VocabularyManager.Services
 
         public delegate void MessageHandler(string message);
         public event MessageHandler Message;
-        private ICommand _command;
-        Volume volume = new Volume();
 
         public ConnectionManagement()
         {

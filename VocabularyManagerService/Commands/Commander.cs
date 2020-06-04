@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,42 +8,31 @@ using VocabularyManagerService.Services;
 
 namespace VocabularyManagerService.Commands
 {
-    public class Commander : ICommand
+    public class Commander : ICommander
     {
-        private string _message;
+        //private string _message;
         private ICommand _command;
         private IConnectionManagement _connection;
 
-        public Commander(string message)
+        public Commander(ICommand command)
         {
-            this._message = message;
-            var dictionary = Parser(message);
-            foreach (var item in dictionary)
-            _command = SetCommand(item.Key, item.Value);
+            this._command = command;
         }
 
-        public void Execute()
+        public void Execute(string message)
         {
-            _command.Execute();
+            //this._message = message;
+            var dictionary = Parser(message);
+            foreach (var item in dictionary)
+            {
+                _command = new CommandFactory().SetCommand(item.Key);
+                _command.Execute(item.Value);
+            }
         }
 
         private Dictionary<string, string> Parser(string message)
         {
-           return JsonConvert.DeserializeObject<Dictionary<string, string>>(message);          
-        }
-
-        private ICommand SetCommand(string type, string message)
-        {
-            if (type == "Audio")
-            {
-               return new SetAudioCommand(message);
-            }
-            if (type == "AudioServerValue")
-            {
-                return new GetAudioCommand(message);                   
-            }
-           
-            return new SetAudioCommand(message);
+            return JsonConvert.DeserializeObject<Dictionary<string, string>>(message);
         }
     }
 }

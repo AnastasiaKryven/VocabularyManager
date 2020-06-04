@@ -8,19 +8,17 @@ using VocabularyManagerService.Services;
 
 namespace VocabularyManagerService.Commands
 {
-    public class GetAudioCommand : ICommand
+    public class GetAudioCommand //: ICommand
     {
-        private string _message;
         private IConnectionManagement _connection;
 
-        public GetAudioCommand(string message)
+        public GetAudioCommand()
         {
-            this._message = message;
         }
 
-        public void Execute()
+        public void Execute(string message)
         {
-            _connection.SendMessage(_message);
+            _connection.SendMessage(message);
         }
     }
 }
