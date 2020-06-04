@@ -10,9 +10,7 @@ namespace VocabularyManagerService.Commands
 {
     public class Commander : ICommander
     {
-        //private string _message;
         private ICommand _command;
-        private IConnectionManagement _connection;
 
         public Commander(ICommand command)
         {
@@ -21,7 +19,6 @@ namespace VocabularyManagerService.Commands
 
         public void Execute(string message)
         {
-            //this._message = message;
             var dictionary = Parser(message);
             foreach (var item in dictionary)
             {

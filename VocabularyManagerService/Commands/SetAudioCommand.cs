@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using VocabularyManagerService.Interfaces;
+using VocabularyManagerService.Services;
 using VolumeManagerService.Services;
 
 namespace VocabularyManagerService.Commands
@@ -11,10 +12,11 @@ namespace VocabularyManagerService.Commands
     public class SetAudioCommand : ICommand
     {
         private string message;
-        private ISystemVolumeService _volumeService = new SystemVolumeService();
+        private ISystemVolumeService _volumeService;
 
         public SetAudioCommand()
         {
+            _volumeService = new SystemVolumeService();
         }
 
         public void Execute(string message)

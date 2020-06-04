@@ -13,13 +13,15 @@ namespace VocabularyManager.Services
 {
     public class ConnectionManagement : IConnectionManagement
     {
-        private readonly NamedPipeClient<string> _client = new NamedPipeClient<string>("pipes");
+        private const string PIPE_NAME = "pipes";
+        private readonly NamedPipeClient<string> _client;
 
         public delegate void MessageHandler(string message);
         public event MessageHandler Message;
 
         public ConnectionManagement()
         {
+            _client = new NamedPipeClient<string>(PIPE_NAME);
             _client.ServerMessage += OnServerMessage;
             _client.Disconnected += OnDisconnected;
             _client.Start();

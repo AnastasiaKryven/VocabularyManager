@@ -24,8 +24,10 @@ namespace VolumeManagerService
             container.Register<ISystemVolumeService, SystemVolumeService>();
 
             container.Register<ICommander, Commander>();
-            container.Register<ICommand, SetAudioCommand>();
-            //container.Register<ICommand, GetAudioCommand>();
+            container.Register<ICommand, SetAudioCommand>(); 
+                //GetAudioCommand);
+          
+            //container.Register<ICommand>(typeof(SetAudioCommand), typeof(GetAudioCommand));
 
             container.Verify();
 

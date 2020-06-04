@@ -9,12 +9,13 @@ using Newtonsoft.Json;
 using VocabularyManagerService.Commands;
 using VocabularyManagerService.Interfaces;
 using VocabularyManagerService.Models;
+using VocabularyManagerService.Services;
 
 namespace VolumeManagerService.Services
 {
     public class SystemVolumeService : ISystemVolumeService
     {
-        private readonly MMDeviceEnumerator _deviceEnumerator = new MMDeviceEnumerator();
+        private readonly MMDeviceEnumerator _deviceEnumerator;
         private readonly MMDevice _playbackDevice;
 
         public delegate void VolHandler(string data);
@@ -24,6 +25,7 @@ namespace VolumeManagerService.Services
 
         public SystemVolumeService()
         {
+            _deviceEnumerator = new MMDeviceEnumerator();
             _playbackDevice = _deviceEnumerator.GetDefaultAudioEndpoint(DataFlow.Render, Role.Multimedia);
             _playbackDevice.AudioEndpointVolume.OnVolumeNotification += AudioEndpointVolume_OnVolumeNotification;
         }
@@ -50,6 +52,8 @@ namespace VolumeManagerService.Services
             };
 
             var json = JsonConvert.SerializeObject(volume);
+            ICommander commander = new Commander(_command);
+            commander.Execute(json);
         }
     }
 }

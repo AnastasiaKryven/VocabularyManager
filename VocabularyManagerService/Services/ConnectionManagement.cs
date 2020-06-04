@@ -14,7 +14,8 @@ namespace VocabularyManagerService.Services
 {
     public class ConnectionManagement : IConnectionManagement
     {
-        private readonly NamedPipeServer<string> _server = new NamedPipeServer<string>("pipes");
+        private const string PIPE_NAME = "pipes";
+        private readonly NamedPipeServer<string> _server;
         private readonly ISet<string> _clients = new HashSet<string>();
 
         private ICommand _command;
@@ -24,6 +25,7 @@ namespace VocabularyManagerService.Services
         {
             this._command = command;
             this._commander = commander;
+            _server = new NamedPipeServer<string>(PIPE_NAME);
             _server.ClientConnected += OnClientConnected;
             _server.ClientDisconnected += OnClientDisconnected;
             _server.ClientMessage += ServerOnClientMessage();           

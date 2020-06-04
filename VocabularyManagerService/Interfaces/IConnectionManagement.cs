@@ -1,4 +1,5 @@
 ﻿using NamedPipeWrapper;
+using VocabularyManagerService.Models;
 
 namespace VocabularyManagerService.Services
 {
