@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace VocabularyManagerService.Models
+namespace VocabularyManager.Models
 {
     public class Volume
     {
-        public string AudioServerValue { get; set; }
+        public string Audio { get; set; }
     }
 }

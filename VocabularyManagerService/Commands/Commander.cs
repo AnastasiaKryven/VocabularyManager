@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using VocabularyManagerService.Interfaces;
+using VocabularyManagerService.Services;
 
 namespace VocabularyManagerService.Commands
 {
@@ -12,6 +13,7 @@ namespace VocabularyManagerService.Commands
     {
         private string _message;
         private ICommand _command;
+        private IConnectionManagement _connection;
 
         public Commander(string message)
         {
@@ -33,10 +35,15 @@ namespace VocabularyManagerService.Commands
 
         private ICommand SetCommand(string type, string message)
         {
-            if (type == "audio")
+            if (type == "Audio")
             {
                return new SetAudioCommand(message);
             }
+            if (type == "AudioServerValue")
+            {
+                return new GetAudioCommand(message);                   
+            }
+           
             return new SetAudioCommand(message);
         }
     }

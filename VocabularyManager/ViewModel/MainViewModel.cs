@@ -4,6 +4,7 @@ using System.Windows.Controls;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using NamedPipeWrapper;
+using VocabularyManager.Models;
 using VocabularyManager.Services;
 using VolumeManagerService.Services;
 
@@ -16,7 +17,8 @@ namespace VolumeManager.ViewModel
 
         private int _currentValue;
         private string _mainTextBox;
-    
+        private Volume volume;
+
         public int CurrentValue
         {
             get { return _currentValue; }
@@ -56,7 +58,6 @@ namespace VolumeManager.ViewModel
         {
             this._connection = connectionManagement;
             ApplyCommand = new RelayCommand(Apply);
-            GetVolumeCommand = new RelayCommand(GetVolume);
             _connection.Message += Display;
         }
 
@@ -69,12 +70,11 @@ namespace VolumeManager.ViewModel
 
         private void Apply()
         {
-            _connection.SendMessage(_currentValue.ToString());
-        }
-
-        private void GetVolume()
-        {
-            _connection.SendMessage(SystemValue);
+            volume = new Volume
+            {
+                Audio = _currentValue.ToString()
+            };
+            _connection.SendMessage(volume);
         }
     }
 }

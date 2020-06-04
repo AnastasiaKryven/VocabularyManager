@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using NamedPipeWrapper;
 using NAudio.CoreAudioApi;
+using Newtonsoft.Json;
 using VocabularyManagerService.Commands;
 using VocabularyManagerService.Interfaces;
 using VolumeManagerService.Services;
@@ -34,17 +35,11 @@ namespace VocabularyManagerService.Services
                 string messageValue = client.Name + ": " + message;
                 _server.PushMessage(messageValue);
                 Console.WriteLine(messageValue);
-
-                IncomeValue(message);
+                var json = JsonConvert.DeserializeObject(message);
                 _command = new Commander(message);
                 _command.Execute();
                 Console.WriteLine("Command");
             };
-        }
-
-        public void IncomeValue(string data)
-        {
-            VolumeData?.Invoke(data);
         }
 
         public void OnClientConnected(NamedPipeConnection<string, string> connection)

@@ -5,7 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using NAudio.CoreAudioApi;
+using Newtonsoft.Json;
+using VocabularyManagerService.Commands;
 using VocabularyManagerService.Interfaces;
+using VocabularyManagerService.Models;
 
 namespace VolumeManagerService.Services
 {
@@ -16,7 +19,8 @@ namespace VolumeManagerService.Services
 
         public delegate void VolHandler(string data);
         public event VolHandler VolumeData;
-        private ICommand command;
+        private ICommand _command;
+        private Volume volume;
 
         public SystemVolumeService()
         {
@@ -40,13 +44,14 @@ namespace VolumeManagerService.Services
 
         public void AudioEndpointVolume_OnVolumeNotification(AudioVolumeNotificationData data)
         {
-            SendToServer((data.MasterVolume * 100).ToString());
+            volume = new Volume
+            {
+                AudioServerValue = (data.MasterVolume * 100).ToString()
+            };
 
-        }
-
-        private void SendToServer(string data)
-        {
-            VolumeData?.Invoke(data);
+            var json = JsonConvert.SerializeObject(volume);
+            _command = new Commander(json);
+            _command.Execute();
         }
     }
 }

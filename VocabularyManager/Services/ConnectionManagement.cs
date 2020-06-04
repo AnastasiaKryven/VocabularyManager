@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NamedPipeWrapper;
+using Newtonsoft.Json;
+using VocabularyManager.Models;
 using VocabularyManagerService.Commands;
 using VocabularyManagerService.Interfaces;
 
@@ -16,6 +18,7 @@ namespace VocabularyManager.Services
         public delegate void MessageHandler(string message);
         public event MessageHandler Message;
         private ICommand _command;
+        Volume volume = new Volume();
 
         public ConnectionManagement()
         {
@@ -24,9 +27,10 @@ namespace VocabularyManager.Services
             _client.Start();
         }
 
-        public void SendMessage(string message)
+        public void SendMessage(Volume message)
         {
-            _client.PushMessage(message);
+            var json = JsonConvert.SerializeObject(message, Formatting.Indented);
+            _client.PushMessage(json);
         }
 
         private void OnServerMessage(NamedPipeConnection<string, string> connection, string message)

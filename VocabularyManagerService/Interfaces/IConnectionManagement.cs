@@ -6,7 +6,6 @@ namespace VocabularyManagerService.Services
     {
         event ConnectionManagement.VolumeHandler VolumeData;
         ConnectionMessageEventHandler<string, string> ServerOnClientMessage();
-        void IncomeValue(string data);
         void OnClientConnected(NamedPipeConnection<string, string> connection);
         void OnClientDisconnected(NamedPipeConnection<string, string> connection);
         void Start();
