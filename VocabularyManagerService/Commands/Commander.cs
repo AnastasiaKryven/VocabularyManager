@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using VocabularyManagerService.Interfaces;
-using VocabularyManagerService.Services;
+using VolumeManagerService.Interfaces;
+using VolumeManagerService.Services;
 
-namespace VocabularyManagerService.Commands
+namespace VolumeManagerService.Commands
 {
     public class Commander : ICommander
     {

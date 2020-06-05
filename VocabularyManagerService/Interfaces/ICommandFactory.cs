@@ -1,6 +1,6 @@
-﻿using VocabularyManagerService.Interfaces;
+﻿using VolumeManagerService.Interfaces;
 
-namespace VocabularyManagerService.Commands
+namespace VolumeManagerService.Commands
 {
     public interface ICommandFactory
     {

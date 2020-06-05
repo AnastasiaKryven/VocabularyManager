@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using VolumeManagerService.Services;
 
-namespace VocabularyManagerService.Services
+namespace VolumeManagerService.Services
 {
     public class NotifyManager : INotifyManager
     {

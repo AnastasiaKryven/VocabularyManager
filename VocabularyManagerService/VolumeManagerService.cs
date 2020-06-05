@@ -1,6 +1,6 @@
 ﻿using System;
 using System.ServiceProcess;
-using VocabularyManagerService.Services;
+using VolumeManagerService.Services;
 using VolumeManagerService.Services;
 
 namespace VolumeManagerService

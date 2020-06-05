@@ -1,6 +1,6 @@
-﻿using VocabularyManager.Models;
+﻿using VolumeManager.Models;
 
-namespace VocabularyManager.Services
+namespace VolumeManager.Services
 {
     public interface IConnectionManagement
     {

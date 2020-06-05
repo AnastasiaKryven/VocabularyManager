@@ -4,8 +4,8 @@ using System.Windows.Controls;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using NamedPipeWrapper;
-using VocabularyManager.Models;
-using VocabularyManager.Services;
+using VolumeManager.Models;
+using VolumeManager.Services;
 using VolumeManagerService.Services;
 
 namespace VolumeManager.ViewModel

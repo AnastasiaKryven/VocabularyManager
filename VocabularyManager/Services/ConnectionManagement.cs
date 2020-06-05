@@ -5,11 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using NamedPipeWrapper;
 using Newtonsoft.Json;
-using VocabularyManager.Models;
-using VocabularyManagerService.Commands;
-using VocabularyManagerService.Interfaces;
+using VolumeManager.Models;
+using VolumeManagerService.Commands;
+using VolumeManagerService.Interfaces;
 
-namespace VocabularyManager.Services
+namespace VolumeManager.Services
 {
     public class ConnectionManagement : IConnectionManagement
     {

@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using NAudio.CoreAudioApi;
 using Newtonsoft.Json;
-using VocabularyManagerService.Commands;
-using VocabularyManagerService.Interfaces;
-using VocabularyManagerService.Services;
+using VolumeManagerService.Commands;
+using VolumeManagerService.Interfaces;
+using VolumeManagerService.Services;
 
 namespace VolumeManagerService.Services
 {

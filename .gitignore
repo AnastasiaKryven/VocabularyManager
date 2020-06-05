@@ -4,11 +4,6 @@
 
 /.vs
 /packages
-/VocabularyManager/bin/Debug
-/VocabularyManager/obj
-/VocabularyManagerService/bin/Debug
-/VocabularyManagerService/obj
-/VocabularyManager/bin
-/VocabularyManagerService/bin
-/NamedPipeWrapper/bin/Debug
-/NamedPipeWrapper/obj
+bin
+obj
+

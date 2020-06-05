@@ -1,4 +1,4 @@
-﻿namespace VocabularyManagerService.Services
+﻿namespace VolumeManagerService.Services
 {
     public interface INotifyManager
     {

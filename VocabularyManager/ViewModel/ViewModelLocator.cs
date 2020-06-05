@@ -1,7 +1,7 @@
 using CommonServiceLocator;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Ioc;
-using VocabularyManager.Services;
+using VolumeManager.Services;
 
 namespace VolumeManager.ViewModel
 {

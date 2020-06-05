@@ -6,10 +6,10 @@ using System.ServiceProcess;
 using System.Text;
 using System.Threading.Tasks;
 using NAudio.CoreAudioApi;
-using VocabularyManagerService.Services;
 using VolumeManagerService.Services;
-using VocabularyManagerService.Interfaces;
-using VocabularyManagerService.Commands;
+using VolumeManagerService.Services;
+using VolumeManagerService.Interfaces;
+using VolumeManagerService.Commands;
 using SimpleInjector;
 
 namespace VolumeManagerService

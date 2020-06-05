@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 using NamedPipeWrapper;
 using NAudio.CoreAudioApi;
 using Newtonsoft.Json;
-using VocabularyManagerService.Commands;
-using VocabularyManagerService.Interfaces;
+using VolumeManagerService.Commands;
+using VolumeManagerService.Interfaces;
 using VolumeManagerService.Services;
 
-namespace VocabularyManagerService.Services
+namespace VolumeManagerService.Services
 {
     public class ConnectionManagement : IConnectionManagement
     {

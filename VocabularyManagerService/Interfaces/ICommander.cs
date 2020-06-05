@@ -1,4 +1,4 @@
-﻿namespace VocabularyManagerService.Commands
+﻿namespace VolumeManagerService.Commands
 {
     public interface ICommander
     {

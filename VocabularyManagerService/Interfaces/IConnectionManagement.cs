@@ -1,7 +1,6 @@
 ﻿using NamedPipeWrapper;
-using VocabularyManagerService.Models;
 
-namespace VocabularyManagerService.Services
+namespace VolumeManagerService.Services
 {
     public interface IConnectionManagement
     {

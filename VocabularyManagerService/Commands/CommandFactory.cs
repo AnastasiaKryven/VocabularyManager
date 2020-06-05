@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using VocabularyManagerService.Interfaces;
-using VocabularyManagerService.Services;
+using VolumeManagerService.Interfaces;
+using VolumeManagerService.Services;
 using VolumeManagerService.Services;
 
-namespace VocabularyManagerService.Commands
+namespace VolumeManagerService.Commands
 {
     public class CommandFactory : ICommandFactory
     {
