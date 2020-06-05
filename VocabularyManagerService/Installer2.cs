@@ -23,7 +23,7 @@ namespace VolumeManagerService
                 Account = ServiceAccount.LocalSystem
             };
             serviceInstaller.StartType = ServiceStartMode.Manual;
-            serviceInstaller.ServiceName = "VocabularyService";
+            serviceInstaller.ServiceName = "VolumeService";
             Installers.Add(processInstaller);
             Installers.Add(serviceInstaller);
         }

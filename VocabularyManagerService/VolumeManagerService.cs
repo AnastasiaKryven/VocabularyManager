@@ -4,12 +4,12 @@ using VolumeManagerService.Services;
 
 namespace VolumeManagerService
 {
-    public partial class VocabularyManagerService : ServiceBase
+    public partial class VolumeManagerService : ServiceBase
     {
         private readonly IConnectionManagement _connection;
         private static INotifyManager _manager;
 
-        public VocabularyManagerService(IConnectionManagement connection, INotifyManager manager)
+        public VolumeManagerService(IConnectionManagement connection, INotifyManager manager)
         {
             this._connection = connection;
             _manager = manager;

@@ -27,7 +27,7 @@ namespace VolumeManagerService
             ServiceBase[] ServicesToRun;
             ServicesToRun = new ServiceBase[]
             {
-                container.GetInstance<VocabularyManagerService>()
+                container.GetInstance<VolumeManagerService>()
             };
 #if DEBUG
             DebugService.RunInteractiveServices(ServicesToRun);

@@ -1,6 +1,6 @@
 ﻿namespace VolumeManagerService
 {
-    partial class VocabularyManagerService
+    partial class VolumeManagerService
     {
         /// <summary> 
         /// Обязательная переменная конструктора.
