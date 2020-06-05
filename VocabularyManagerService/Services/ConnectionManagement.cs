@@ -6,7 +6,7 @@ using VolumeManagerService.Commands;
 
 namespace VolumeManagerService.Services
 {
-    public class ConnectionManagement : IConnectionManagement
+    public class ConnectionManagement : IConnectionManagement, ISendMessage
     {
         private const string PIPE_NAME = "pipes";
         private readonly NamedPipeServer<string> _server;

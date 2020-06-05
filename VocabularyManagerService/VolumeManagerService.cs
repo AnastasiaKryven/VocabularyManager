@@ -6,21 +6,23 @@ namespace VolumeManagerService
 {
     public partial class VocabularyManagerService : ServiceBase
     {
-        private readonly IConnectionManagement connection;
+        private readonly IConnectionManagement _connection;
+        private static INotifyManager _manager;
 
-        public VocabularyManagerService(IConnectionManagement connection)
+        public VocabularyManagerService(IConnectionManagement connection, INotifyManager manager)
         {
-            this.connection = connection;
+            this._connection = connection;
+            _manager = manager;
         }
 
         protected override void OnStart(string[] args)
         {
-            connection.Start();
+            _connection.Start();
         }
 
         protected override void OnStop()
         {
-            connection.Stop();
+            _connection.Stop();
         }
     }
 }

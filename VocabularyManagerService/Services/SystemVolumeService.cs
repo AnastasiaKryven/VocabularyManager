@@ -16,14 +16,18 @@ namespace VolumeManagerService.Services
     {
         private readonly MMDeviceEnumerator _deviceEnumerator;
         private readonly MMDevice _playbackDevice;
-        private readonly INotifyManager _notify;
+        public event AudioEndpointVolumeNotificationDelegate OnVolumeNotification;
 
-        public SystemVolumeService(INotifyManager notify)
+        public SystemVolumeService()
         {
             _deviceEnumerator = new MMDeviceEnumerator();
             _playbackDevice = _deviceEnumerator.GetDefaultAudioEndpoint(DataFlow.Render, Role.Multimedia);
-            _playbackDevice.AudioEndpointVolume.OnVolumeNotification += AudioEndpointVolume_OnVolumeNotification;
-            this._notify = notify;
+            _playbackDevice.AudioEndpointVolume.OnVolumeNotification += OnVolume;
+        }
+
+        public void OnVolume(AudioVolumeNotificationData data)
+        {
+            this.OnVolumeNotification?.Invoke(data);
         }
 
         public int GetVolume()
@@ -37,13 +41,6 @@ namespace VolumeManagerService.Services
                 throw new ArgumentException("Volume must be between 0 and 100!");
 
             _playbackDevice.AudioEndpointVolume.MasterVolumeLevelScalar = volumeLevel / 100.0f;
-        }
-
-        public void AudioEndpointVolume_OnVolumeNotification(AudioVolumeNotificationData data)
-        {
-            var volumeValue = (data.MasterVolume * 100).ToString();
-
-            _notify.Send(volumeValue);
         }
     }
 }

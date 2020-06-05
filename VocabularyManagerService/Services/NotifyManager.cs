@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NAudio.CoreAudioApi;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,15 +10,24 @@ namespace VolumeManagerService.Services
 {
     public class NotifyManager : INotifyManager
     {
-        private IConnectionManagement _connection;
+        private ISendMessage _connection;
 
-        public NotifyManager(IConnectionManagement connection)
+        public NotifyManager(ISendMessage connection, ISystemVolumeService volumeService)
         {
             this._connection = connection;
+            volumeService.OnVolumeNotification += AudioEndpointVolume_OnVolumeNotification;
         }
 
-        public void Send(string message)
+        public void AudioEndpointVolume_OnVolumeNotification(AudioVolumeNotificationData data)
         {
+            var volumeValue = (data.MasterVolume * 100).ToString();
+
+            this.Send(volumeValue);
+        }
+
+        private void Send(string message)
+        {
+            Console.WriteLine(message);
             _connection.SendMessage(message);
         }
     }

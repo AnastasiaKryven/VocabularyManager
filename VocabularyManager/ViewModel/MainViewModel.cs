@@ -15,43 +15,16 @@ namespace VolumeManager.ViewModel
         private readonly IConnectionManagement _connection;
 
         private int _currentValue;
-        private string _mainTextBox;
         private Volume volume;
 
-        public int CurrentValue
-        {
-            get { return _currentValue; }
-            set
-            {
-                _currentValue = value;
-                RaisePropertyChanged(nameof(CurrentValue));
-            }
-        }
+        public int CurrentValue { get; set; }
+        public string SystemValue { get; set; }
+
+        public string MainTextBox { get; set; }
 
         public RelayCommand ApplyCommand { get; set; }
 
         public RelayCommand GetVolumeCommand { get; set; }
-
-        private string _systemValue;
-        public string SystemValue
-        {
-            get { return _systemValue; }
-            set
-            {
-                _systemValue = value;
-                RaisePropertyChanged(nameof(SystemValue));
-            }
-        } 
-
-        public string MainTextBox
-        {
-            get { return this._mainTextBox; }
-            set
-            {
-                _mainTextBox = value;
-                RaisePropertyChanged(nameof(MainTextBox));
-            }
-        }
 
         public MainViewModel(IConnectionManagement connectionManagement)
         {
@@ -64,7 +37,11 @@ namespace VolumeManager.ViewModel
         {
             MainTextBox += Environment.NewLine + "Server: " + message;
             CurrentValue = Convert.ToInt32(message);
-            SystemValue = CurrentValue.ToString();
+            SystemValue = message;
+
+            RaisePropertyChanged(() => CurrentValue);
+            RaisePropertyChanged(() => SystemValue);
+            RaisePropertyChanged(() => MainTextBox);
         }
 
         private void Apply()
