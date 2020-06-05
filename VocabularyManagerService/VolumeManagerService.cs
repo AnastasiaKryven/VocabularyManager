@@ -7,12 +7,10 @@ namespace VolumeManagerService
     public partial class VolumeManagerService : ServiceBase
     {
         private readonly IConnectionManagement _connection;
-        private static INotifyManager _manager;
 
-        public VolumeManagerService(IConnectionManagement connection, INotifyManager manager)
+        public VolumeManagerService(IConnectionManagement connection)
         {
             this._connection = connection;
-            _manager = manager;
         }
 
         protected override void OnStart(string[] args)

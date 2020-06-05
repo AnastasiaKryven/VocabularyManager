@@ -18,12 +18,12 @@ namespace VolumeManager.ViewModel
         private string _systemValue;
         private string _mainTextBox;
 
-        private Volume volume;
+        private Volume _volume;
 
         public int CurrentValue {
             get
             {
-                return _currentValue;
+                return this._currentValue;
             }
             set
             {
@@ -35,7 +35,7 @@ namespace VolumeManager.ViewModel
         public string SystemValue {
             get
             {
-                return _systemValue;
+                return this._systemValue;
             }
             set
             {
@@ -44,16 +44,14 @@ namespace VolumeManager.ViewModel
             }
         }
 
-        public string MainTextBox { 
-            get 
-            {
-                return _mainTextBox;
-            }             
-            set 
+        public string MainTextBox
+        {
+            get { return this._mainTextBox; }
+            set
             {
                 _mainTextBox = value;
                 RaisePropertyChanged(nameof(MainTextBox));
-            } 
+            }
         }
 
         public RelayCommand ApplyCommand { get; set; }
@@ -71,16 +69,16 @@ namespace VolumeManager.ViewModel
         {
             MainTextBox += Environment.NewLine + "Server: " + message;
             CurrentValue = Convert.ToInt32(message);
-            SystemValue = message;
+            SystemValue = CurrentValue.ToString();
         }
 
         private void Apply()
         {
-            volume = new Volume
+            _volume = new Volume
             {
                 Audio = _currentValue.ToString()
             };
-            _connection.SendMessage(volume);
+            _connection.SendMessage(_volume);
         }
     }
 }
