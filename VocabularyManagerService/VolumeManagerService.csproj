@@ -90,7 +90,7 @@
     <Compile Include="Services\ConnectionManagement.cs" />
     <Compile Include="Interfaces\IConnectionManagement.cs" />
     <Compile Include="Interfaces\ISystemVolumeService.cs" />
-    <Compile Include="Services\INotifyManager.cs" />
+    <Compile Include="Interfaces\INotifyManager.cs" />
     <Compile Include="Services\NotifyManager.cs" />
     <Compile Include="Services\SystemVolumeService.cs" />
     <Compile Include="VolumeManagerService.cs">

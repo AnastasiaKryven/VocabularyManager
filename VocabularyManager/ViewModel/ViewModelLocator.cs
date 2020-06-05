@@ -27,7 +27,8 @@ namespace VolumeManager.ViewModel
         
         public static void Cleanup()
         {
-            // TODO Clear the ViewModels
+            SimpleIoc.Default.Unregister<MainViewModel>();
+            SimpleIoc.Default.Unregister<ConnectionManagement>();
         }
     }
 }
