@@ -6,7 +6,6 @@ using GalaSoft.MvvmLight.Command;
 using NamedPipeWrapper;
 using VolumeManager.Models;
 using VolumeManager.Services;
-using VolumeManagerService.Services;
 
 namespace VolumeManager.ViewModel
 {

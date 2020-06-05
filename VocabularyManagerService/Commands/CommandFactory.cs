@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using VolumeManagerService.Interfaces;
 using VolumeManagerService.Services;
-using VolumeManagerService.Services;
 
 namespace VolumeManagerService.Commands
 {

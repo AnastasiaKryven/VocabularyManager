@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using NamedPipeWrapper;
-using NAudio.CoreAudioApi;
+﻿using NamedPipeWrapper;
 using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
 using VolumeManagerService.Commands;
-using VolumeManagerService.Interfaces;
-using VolumeManagerService.Services;
 
 namespace VolumeManagerService.Services
 {
@@ -19,7 +13,7 @@ namespace VolumeManagerService.Services
         private readonly ISet<string> _clients;
         private readonly ICommander _commander;
 
-        public ConnectionManagement(ICommander commander, INotifyManager notify)
+        public ConnectionManagement(ICommander commander)
         {
             this._commander = commander;
             _server = new NamedPipeServer<string>(PIPE_NAME);
@@ -27,12 +21,6 @@ namespace VolumeManagerService.Services
             _server.ClientConnected += OnClientConnected;
             _server.ClientDisconnected += OnClientDisconnected;
             _server.ClientMessage += ServerOnClientMessage();
-            notify.AudioNotify += Notify_AudioNotify;
-        }
-
-        private void Notify_AudioNotify(string data)
-        {
-            _server.PushMessage(data);
         }
 
         public ConnectionMessageEventHandler<string, string> ServerOnClientMessage()

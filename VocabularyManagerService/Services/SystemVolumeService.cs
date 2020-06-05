@@ -16,15 +16,14 @@ namespace VolumeManagerService.Services
     {
         private readonly MMDeviceEnumerator _deviceEnumerator;
         private readonly MMDevice _playbackDevice;
+        private readonly INotifyManager _notify;
 
-        public delegate void VolHandler(string data);
-        public event VolHandler VolumeData;
-
-        public SystemVolumeService()
+        public SystemVolumeService(INotifyManager notify)
         {
             _deviceEnumerator = new MMDeviceEnumerator();
             _playbackDevice = _deviceEnumerator.GetDefaultAudioEndpoint(DataFlow.Render, Role.Multimedia);
             _playbackDevice.AudioEndpointVolume.OnVolumeNotification += AudioEndpointVolume_OnVolumeNotification;
+            this._notify = notify;
         }
 
         public int GetVolume()
@@ -44,7 +43,7 @@ namespace VolumeManagerService.Services
         {
             var volumeValue = (data.MasterVolume * 100).ToString();
 
-            VolumeData?.Invoke(volumeValue);
+            _notify.Send(volumeValue);
         }
     }
 }

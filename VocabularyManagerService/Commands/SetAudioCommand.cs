@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using VolumeManagerService.Interfaces;
 using VolumeManagerService.Services;
-using VolumeManagerService.Services;
 
 namespace VolumeManagerService.Commands
 {

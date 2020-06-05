@@ -9,17 +9,16 @@ namespace VolumeManagerService.Services
 {
     public class NotifyManager : INotifyManager
     {
-        public delegate void AudioHandler(string data);
-        public event AudioHandler AudioNotify;
+        private IConnectionManagement _connection;
 
-        public NotifyManager(ISystemVolumeService volumeService)
+        public NotifyManager(IConnectionManagement connection)
         {
-            volumeService.VolumeData += VolumeService_VolumeData;
+            this._connection = connection;
         }
 
-        private void VolumeService_VolumeData(string data)
+        public void Send(string message)
         {
-            AudioNotify?.Invoke(data);
+            _connection.SendMessage(message);
         }
     }
 }

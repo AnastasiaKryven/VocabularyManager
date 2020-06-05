@@ -2,6 +2,6 @@
 {
     public interface INotifyManager
     {
-        event NotifyManager.AudioHandler AudioNotify;
+        void Send(string message);
     }
 }
