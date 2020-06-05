@@ -9,8 +9,6 @@ namespace VocabularyManagerService.Services
 {
     public class NotifyManager : INotifyManager
     {
-        private readonly IConnectionManagement _connection;
-
         public delegate void AudioHandler(string data);
         public event AudioHandler AudioNotify;
 

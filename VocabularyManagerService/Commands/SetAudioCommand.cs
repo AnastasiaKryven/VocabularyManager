@@ -13,9 +13,9 @@ namespace VocabularyManagerService.Commands
     {
         private readonly ISystemVolumeService _volumeService;
 
-        public SetAudioCommand()
+        public SetAudioCommand(ISystemVolumeService volumeService)
         {
-            _volumeService = new SystemVolumeService();
+            _volumeService = volumeService;
         }
 
         public void Execute(string message)

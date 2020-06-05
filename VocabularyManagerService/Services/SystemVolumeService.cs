@@ -41,7 +41,6 @@ namespace VolumeManagerService.Services
             _playbackDevice.AudioEndpointVolume.MasterVolumeLevelScalar = volumeLevel / 100.0f;
         }
 
-
         public void AudioEndpointVolume_OnVolumeNotification(AudioVolumeNotificationData data)
         {
             var volumeValue = (data.MasterVolume * 100).ToString();

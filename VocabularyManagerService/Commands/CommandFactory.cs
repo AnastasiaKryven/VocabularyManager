@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using VocabularyManagerService.Interfaces;
 using VocabularyManagerService.Services;
+using VolumeManagerService.Services;
 
 namespace VocabularyManagerService.Commands
 {
@@ -9,11 +10,11 @@ namespace VocabularyManagerService.Commands
     {
         private readonly IDictionary<string, Func<ICommand>> _commands;
 
-        public CommandFactory(ICommand command)
+        public CommandFactory(ISystemVolumeService volumeService)
         {
             _commands = new Dictionary<string, Func<ICommand>>
                         {
-                            {"Audio", () => new SetAudioCommand()}
+                            {"Audio", () => new SetAudioCommand(volumeService)}
                         };
         }
 

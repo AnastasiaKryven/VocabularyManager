@@ -17,7 +17,6 @@ namespace VocabularyManagerService.Services
         private const string PIPE_NAME = "pipes";
         private readonly NamedPipeServer<string> _server;
         private readonly ISet<string> _clients;
-
         private readonly ICommander _commander;
 
         public ConnectionManagement(ICommander commander, INotifyManager notify)
