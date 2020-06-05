@@ -11,9 +11,11 @@ namespace VocabularyManagerService.Commands
     public class Commander : ICommander
     {
         private ICommand _command;
+        private readonly ICommandFactory _commandFactory;
 
-        public Commander()
+        public Commander(ICommandFactory commandFactory)
         {
+            this._commandFactory = commandFactory;
         }
 
         public void Execute(string message)
@@ -21,7 +23,7 @@ namespace VocabularyManagerService.Commands
             var dictionary = Parser(message);
             foreach (var item in dictionary)
             {
-                _command = new CommandFactory().SetCommand(item.Key);
+                _command = _commandFactory.SetCommand(item.Key);
                 _command.Execute(item.Value);
             }
         }

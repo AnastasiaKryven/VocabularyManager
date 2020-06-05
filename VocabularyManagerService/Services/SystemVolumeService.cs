@@ -15,17 +15,14 @@ namespace VolumeManagerService.Services
 {
     public class SystemVolumeService : ISystemVolumeService
     {
-        private readonly ICommander _comander;
         private readonly MMDeviceEnumerator _deviceEnumerator;
         private readonly MMDevice _playbackDevice;
 
         public delegate void VolHandler(string data);
         public event VolHandler VolumeData;
-        private Volume volume;
 
-        public SystemVolumeService(ICommander comander)
+        public SystemVolumeService()
         {
-            _comander = comander;
             _deviceEnumerator = new MMDeviceEnumerator();
             _playbackDevice = _deviceEnumerator.GetDefaultAudioEndpoint(DataFlow.Render, Role.Multimedia);
             _playbackDevice.AudioEndpointVolume.OnVolumeNotification += AudioEndpointVolume_OnVolumeNotification;
@@ -47,13 +44,9 @@ namespace VolumeManagerService.Services
 
         public void AudioEndpointVolume_OnVolumeNotification(AudioVolumeNotificationData data)
         {
-            volume = new Volume
-            {
-                AudioServerValue = (data.MasterVolume * 100).ToString()
-            };
+            var volumeValue = (data.MasterVolume * 100).ToString();
 
-            var json = JsonConvert.SerializeObject(volume);
-            _comander.Execute(json);
+            VolumeData?.Invoke(volumeValue);
         }
     }
 }

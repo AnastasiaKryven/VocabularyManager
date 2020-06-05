@@ -16,19 +16,24 @@ namespace VocabularyManagerService.Services
     {
         private const string PIPE_NAME = "pipes";
         private readonly NamedPipeServer<string> _server;
-        private readonly ISet<string> _clients = new HashSet<string>();
+        private readonly ISet<string> _clients;
 
-        private ICommand _command;
-        private ICommander _commander;
+        private readonly ICommander _commander;
 
-        public ConnectionManagement(ICommand command, ICommander commander)
+        public ConnectionManagement(ICommander commander, INotifyManager notify)
         {
-            this._command = command;
             this._commander = commander;
             _server = new NamedPipeServer<string>(PIPE_NAME);
+            _clients = new HashSet<string>();
             _server.ClientConnected += OnClientConnected;
             _server.ClientDisconnected += OnClientDisconnected;
-            _server.ClientMessage += ServerOnClientMessage();           
+            _server.ClientMessage += ServerOnClientMessage();
+            notify.AudioNotify += Notify_AudioNotify;
+        }
+
+        private void Notify_AudioNotify(string data)
+        {
+            _server.PushMessage(data);
         }
 
         public ConnectionMessageEventHandler<string, string> ServerOnClientMessage()

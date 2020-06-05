@@ -11,8 +11,13 @@ namespace VolumeManagerService
 
         public VocabularyManagerService(IConnectionManagement connection, ISystemVolumeService volumeService)
         {
-            //this._volumeService = volumeService;
             this.connection = connection;
+            volumeService.VolumeData += VolumeService_VolumeData;
+        }
+
+        private void VolumeService_VolumeData(string data)
+        {
+            connection.SendMessage(data);
         }
 
         protected override void OnStart(string[] args)

@@ -11,8 +11,7 @@ namespace VocabularyManagerService.Commands
 {
     public class SetAudioCommand : ICommand
     {
-        private string message;
-        private ISystemVolumeService _volumeService;
+        private readonly ISystemVolumeService _volumeService;
 
         public SetAudioCommand()
         {
@@ -21,7 +20,6 @@ namespace VocabularyManagerService.Commands
 
         public void Execute(string message)
         {
-            this.message = message;
             Console.WriteLine("Command " + message);
             _volumeService.SetVolume(Convert.ToInt32(message));
         }
