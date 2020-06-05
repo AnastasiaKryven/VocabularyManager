@@ -8,7 +8,6 @@ using NAudio.CoreAudioApi;
 using Newtonsoft.Json;
 using VocabularyManagerService.Commands;
 using VocabularyManagerService.Interfaces;
-using VocabularyManagerService.Models;
 using VocabularyManagerService.Services;
 
 namespace VolumeManagerService.Services

@@ -9,12 +9,13 @@ namespace VocabularyManagerService.Commands
     public class CommandFactory : ICommandFactory
     {
         private readonly IDictionary<string, Func<ICommand>> _commands;
+        private const string AUDIO_TYPE = "Audio";
 
         public CommandFactory(ISystemVolumeService volumeService)
         {
             _commands = new Dictionary<string, Func<ICommand>>
                         {
-                            {"Audio", () => new SetAudioCommand(volumeService)}
+                            {AUDIO_TYPE, () => new SetAudioCommand(volumeService)}
                         };
         }
 

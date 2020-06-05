@@ -79,7 +79,6 @@
     <Compile Include="Interfaces\ICommander.cs" />
     <Compile Include="Commands\SetAudioCommand.cs" />
     <Compile Include="Interfaces\ICommand.cs" />
-    <Compile Include="Models\Volume.cs" />
     <Compile Include="Services\DebugService.cs" />
     <Compile Include="Installer2.cs">
       <SubType>Component</SubType>
