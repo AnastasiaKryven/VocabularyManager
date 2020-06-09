@@ -9,7 +9,6 @@ using VolumeManager.Services;
 
 namespace VolumeManager.ViewModel
 {
-
     public class MainViewModel : ViewModelBase
     {
         private readonly IConnectionManagement _connection;
@@ -17,9 +16,7 @@ namespace VolumeManager.ViewModel
         private int _currentValue;
         private string _systemValue;
         private string _mainTextBox;
-
         private Volume _volume;
-
         public int CurrentValue
         {
             get
@@ -46,6 +43,7 @@ namespace VolumeManager.ViewModel
             }
         }
 
+
         public string MainTextBox
         {
             get { return this._mainTextBox; }
@@ -70,8 +68,15 @@ namespace VolumeManager.ViewModel
         private void Display(string message)
         {
             MainTextBox += Environment.NewLine + "Server: " + message;
-            CurrentValue = Convert.ToInt32(message);
-            SystemValue = CurrentValue.ToString();
+            try
+            {
+                CurrentValue = Convert.ToInt32(message);
+                SystemValue = CurrentValue.ToString();
+            }
+            catch
+            {
+                SystemValue = String.Empty;
+            }
         }
 
         private void Apply()
