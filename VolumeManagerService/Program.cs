@@ -12,15 +12,20 @@ namespace VolumeManagerService
         {
             var container = new SimpleInjector.Container();
 
-            container.Register<IConnectionManagement, ConnectionManagement>();
-            container.Register<ISendMessage, ConnectionManagement>();
-            container.Register<ISystemVolumeService, SystemVolumeService>();
-
-            container.Register<ICommander, Commander>();
-            container.Register<ICommand, SetAudioCommand>();
             container.Register<INotifyManager, NotifyManager>();
             container.Register<ICommandFactory, CommandFactory>();
+            container.Register<ICommander, Commander>();
+            container.Register<ICommand, SetAudioCommand>();
+            container.Register<ISystemVolumeService, SystemVolumeService>();
 
+            //container.RegisterSingleton<ConnectionManagement>();
+            //container.RegisterSingleton<IConnectionManagement>(() => container.GetInstance<ConnectionManagement>());
+            //container.RegisterSingleton<ISendMessage>(() => container.GetInstance<ConnectionManagement>());
+           
+
+            container.Register<IConnectionManagement>(() => ConnectionManagement.GetInstance(container.GetInstance<ICommander>()));
+
+            container.Register<ISendMessage>(() => ConnectionManagement.GetInstance(container.GetInstance<ICommander>()));
 
             container.Verify();
 

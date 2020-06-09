@@ -13,7 +13,9 @@ namespace VolumeManagerService.Services
         private readonly ISet<string> _clients;
         private readonly ICommander _commander;
 
-        public ConnectionManagement(ICommander commander)
+        private static ConnectionManagement _instance;
+
+        private ConnectionManagement(ICommander commander)
         {
             this._commander = commander;
             _server = new NamedPipeServer<string>(PIPE_NAME);
@@ -21,6 +23,15 @@ namespace VolumeManagerService.Services
             _server.ClientConnected += OnClientConnected;
             _server.ClientDisconnected += OnClientDisconnected;
             _server.ClientMessage += ServerOnClientMessage();
+        }
+
+        public static ConnectionManagement GetInstance(ICommander commander)
+        {
+            if (_instance == null)
+            {
+                _instance = new ConnectionManagement(commander);
+            }
+            return _instance;
         }
 
         public ConnectionMessageEventHandler<string, string> ServerOnClientMessage()
